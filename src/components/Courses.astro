@@ -1,0 +1,29 @@
+---
+import CourseCard from './CourseCard.astro';
+const courses = [
+  { icon: '🛡️', title: 'Compliance 101', description: 'ADA/WCAG basics — why it matters and how to avoid lawsuits before they find you.', price: 'Free', free: true },
+  { icon: '⚡', title: 'Speed Matters', description: 'Core Web Vitals explained — why slow sites lose 40% of visitors and how to fix it.', price: 'Free', free: true },
+  { icon: '🔒', title: 'Security Foundations', description: 'HTTPS, headers, and common vulnerabilities every small business should lock down.', price: 'Free', free: true },
+  { icon: '🛡️', title: 'Shield Mastery', description: 'Get the most from CC3PO Shield monitoring — alerts, dashboards, and response playbooks.', price: '$49', free: false },
+  { icon: '🏰', title: 'Fortress Operations', description: 'Complete security + compliance playbook. From audit to action in one course.', price: '$99', free: false },
+  { icon: '🏛️', title: 'Citadel Strategy', description: 'Enterprise-grade compliance at small business scale. Policies, processes, proof.', price: '$149', free: false },
+];
+---
+<section id="courses" class="courses">
+  <div class="container">
+    <h2>Our Courses</h2>
+    <p class="subtitle">Start free. Level up when you're ready.</p>
+    <div class="grid">
+      {courses.map(c => <CourseCard {...c} />)}
+    </div>
+  </div>
+</section>
+<style>
+  .courses { padding: 60px 0 80px; }
+  h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; }
+  .subtitle { color: var(--text-muted); margin-top: 8px; font-size: 1.05rem; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px; margin-top: 36px;
+  }
+</style>

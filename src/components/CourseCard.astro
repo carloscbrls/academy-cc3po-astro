@@ -1,0 +1,45 @@
+---
+export interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  price: string;
+  free?: boolean;
+}
+const { icon, title, description, price, free = false } = Astro.props;
+---
+<div class="card">
+  <div class="icon">{icon}</div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <div class="meta">
+    <span class:list={['price', { free }]}>{price}</span>
+  </div>
+  <a href="#" class="btn">Start Learning</a>
+</div>
+<style>
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px 24px;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .card:hover { border-color: var(--accent); background: var(--bg-card-hover); }
+  .icon { font-size: 2rem; line-height: 1; }
+  h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }
+  p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; flex: 1; }
+  .meta { margin-top: auto; }
+  .price {
+    display: inline-block; font-size: 0.8rem; font-weight: 600;
+    background: rgba(255,255,255,0.06); color: var(--text-muted);
+    padding: 4px 12px; border-radius: 999px;
+  }
+  .price.free { background: rgba(16,185,129,0.12); color: var(--accent); }
+  .btn {
+    display: inline-block; text-align: center;
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text); padding: 10px 20px; border-radius: 999px;
+    font-size: 0.85rem; font-weight: 600; transition: all 0.2s; cursor: pointer;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+</style>

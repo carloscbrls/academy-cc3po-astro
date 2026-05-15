@@ -1,0 +1,27 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="brand">
+        <div class="logo">CC3PO <span>Academy</span></div>
+        <p>Practical digital skills for small business owners.</p>
+      </div>
+      <div class="links">
+        <a href="https://cc3po.com">cc3po.com</a>
+        <a href="https://audit.cc3po.com">Audit Tool</a>
+        <a href="https://docs.cc3po.com">Docs</a>
+      </div>
+    </div>
+    <div class="copy">&copy; {new Date().getFullYear()} CC3PO. All rights reserved.</div>
+  </div>
+</footer>
+<style>
+  .footer { border-top: 1px solid var(--border); padding: 40px 0 24px; }
+  .row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
+  .brand .logo { font-weight: 800; font-size: 1.1rem; }
+  .brand .logo span { color: var(--accent); }
+  .brand p { color: var(--text-dim); margin-top: 6px; font-size: 0.85rem; }
+  .links { display: flex; gap: 20px; }
+  .links a { color: var(--text-muted); font-size: 0.85rem; transition: color 0.2s; }
+  .links a:hover { color: var(--accent); }
+  .copy { color: var(--text-dim); font-size: 0.8rem; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); }
+</style>
