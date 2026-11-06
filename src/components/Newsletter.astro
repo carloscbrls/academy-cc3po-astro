@@ -1,5 +1,9 @@
 ---
-const FORM_ACTION = 'https://formsubmit.co/legal@cc3po.com';
+// Netlify Forms. `netlify` + `name` are required for the build to detect
+// the form. Submissions land in the Netlify dashboard (and can be emailed
+// to legal@cc3po.com). This replaced formsubmit.co, which was returning
+// 522 and would have silently dropped every application.
+const FORM_ACTION = '/';
 ---
 
 <section class="apply" id="apply">
@@ -26,11 +30,19 @@ const FORM_ACTION = 'https://formsubmit.co/legal@cc3po.com';
       </div>
     </div>
 
-    <form class="form" action={FORM_ACTION} method="POST">
-      <input type="hidden" name="_subject" value="CC3PO AI Builders — application" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_next" value="https://academy.cc3po.com/?applied=1" />
+    <form
+      class="form"
+      name="ai-builders-application"
+      method="POST"
+      data-netlify="true"
+      netlify
+      netlify-honeypot="company"
+      action={FORM_ACTION}
+    >
+      <input type="hidden" name="form-name" value="ai-builders-application" />
+      <p class="hidden">
+        <label>Leave this empty: <input name="company" /></label>
+      </p>
 
       <div class="row">
         <label class="field">
@@ -184,6 +196,11 @@ const FORM_ACTION = 'https://formsubmit.co/legal@cc3po.com';
   }
   .submit:hover { background: var(--accent-hover); }
   .fineprint { color: var(--text-dim); font-size: 0.84rem; margin: 16px 0 0; }
+  /* Honeypot: off-screen but not display:none, so bots still fill it. */
+  .hidden {
+    position: absolute; left: -5000px; top: auto;
+    width: 1px; height: 1px; overflow: hidden;
+  }
   @media (max-width: 640px) {
     .row { grid-template-columns: 1fr; }
     .form { padding: 22px; }

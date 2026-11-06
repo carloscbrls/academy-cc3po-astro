@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build"
+  publish = "dist/"
+
+# Netlify Forms are parsed out of the built HTML during a deploy that runs
+# the site's own build command. Deploying a prebuilt `dist/` with
+# `netlify deploy --dir=dist` skips that step, which is why the form was
+# not registered the first time around.
+#
+# The form is defined in src/components/Newsletter.astro with:
+#   name="ai-builders-application"  data-netlify="true"  netlify
+# Submissions land in the Netlify dashboard under the site's Forms tab.
+
+[[redirects]]
+  from = "/apply"
+  to = "/#apply"
+  status = 301
+  force = true

@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base title="Application received">
+  <div class="container wrap">
+    <div class="badge">Application received</div>
+    <h1>You're in the queue.</h1>
+    <p class="lead">
+      Thanks for applying. Every application is read by a human — not scored
+      by a filter. If we're a fit, you'll hear from us within a week with
+      the date and the address.
+    </p>
+    <p class="lead">
+      If we're not a fit, you'll hear that too, and we'll point you at
+      something better if we know of one.
+    </p>
+    <div class="actions">
+      <a class="cta" href="/#curriculum">See the 24 sessions</a>
+      <a class="cta secondary" href="/">Back to the program</a>
+    </div>
+  </div>
+  <Footer />
+</Base>
+<style>
+  .wrap { padding: 90px 0 60px; max-width: 640px; }
+  .badge {
+    display: inline-block; background: rgba(16,185,129,0.1); color: var(--accent);
+    border: 1px solid rgba(16,185,129,0.2); border-radius: 999px;
+    padding: 6px 16px; font-size: 0.8rem; font-weight: 600; margin-bottom: 22px;
+  }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; }
+  .lead { color: var(--text-muted); font-size: 1.05rem; margin: 18px 0; line-height: 1.65; }
+  .actions { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+  .cta {
+    display: inline-block; background: var(--accent); color: #000; font-weight: 700;
+    padding: 13px 28px; border-radius: 999px; font-size: 0.95rem;
+  }
+  .cta.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+</style>
