@@ -1,18 +1,20 @@
 <header class="nav">
   <div class="container nav-inner">
-    <a href="/" class="logo">CC3PO <span>Academy</span></a>
+    <a href="/" class="logo">CC3PO <span>AI Builders</span></a>
     <nav>
-      <a href="#courses">Courses</a>
-      <a href="#newsletter">Newsletter</a>
+      <a href="#curriculum">Curriculum</a>
+      <a href="#apply">Apply</a>
+      <a href="https://cc3po.com">cc3po.com</a>
     </nav>
   </div>
 </header>
 <style>
-  .nav { border-bottom: 1px solid var(--border); padding: 16px 0; }
+  .nav { border-bottom: 1px solid var(--border); padding: 16px 0; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(8px); z-index: 50; }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; }
   .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; }
   .logo span { color: var(--accent); }
   nav { display: flex; gap: 24px; }
   nav a { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
   nav a:hover { color: var(--accent); }
+  @media (max-width: 640px) { nav a:first-child { display: none; } }
 </style>

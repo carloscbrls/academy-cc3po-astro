@@ -1,29 +1,161 @@
 ---
-import CourseCard from './CourseCard.astro';
-const courses = [
-  { icon: '🛡️', title: 'Compliance 101', description: 'ADA/WCAG basics — why it matters and how to avoid lawsuits before they find you.', price: 'Free', free: true },
-  { icon: '⚡', title: 'Speed Matters', description: 'Core Web Vitals explained — why slow sites lose 40% of visitors and how to fix it.', price: 'Free', free: true },
-  { icon: '🔒', title: 'Security Foundations', description: 'HTTPS, headers, and common vulnerabilities every small business should lock down.', price: 'Free', free: true },
-  { icon: '🛡️', title: 'Shield Mastery', description: 'Get the most from CC3PO Shield monitoring — alerts, dashboards, and response playbooks.', price: '$49', free: false },
-  { icon: '🏰', title: 'Fortress Operations', description: 'Complete security + compliance playbook. From audit to action in one course.', price: '$99', free: false },
-  { icon: '🏛️', title: 'Citadel Strategy', description: 'Enterprise-grade compliance at small business scale. Policies, processes, proof.', price: '$149', free: false },
+const quarters = [
+  {
+    label: 'Quarter 1',
+    title: 'Orientation & First Principles',
+    blurb: 'What AI actually is, what it is not, and how a machine learns from data.',
+    sessions: [
+      { n: 1, title: 'What Is AI, Actually?', concept: 'Prediction machine, not a mind', artifact: 'A comparison note' },
+      { n: 2, title: 'A History of AI', concept: 'Winters = scaling & expectation failures', artifact: 'Your history paragraph' },
+      { n: 3, title: 'How a Machine Learns From Data', concept: 'The generalization gap', artifact: 'A confusion matrix' },
+      { n: 4, title: 'Foundations Capstone', concept: 'An AI product is a pipeline', artifact: 'A live URL' },
+      { n: 5, title: 'Linear Algebra Without Torture', concept: 'Vectors = meanings', artifact: 'A 2D embedding map' },
+      { n: 6, title: 'Neural Networks', concept: 'Gradient descent on a number', artifact: 'A loss curve + a deliberate failure' },
+    ],
+  },
+  {
+    label: 'Quarter 2',
+    title: 'Neural Networks & Transformers',
+    blurb: 'From a single neuron to attention — the machinery behind every LLM.',
+    sessions: [
+      { n: 7, title: 'Convolutional Networks', concept: 'Locality and learned filters', artifact: 'A heatmap on your own photos' },
+      { n: 8, title: 'Attention', concept: 'Lookup, weight, average, repeat', artifact: 'Your own attention implementation' },
+      { n: 9, title: 'Tokens & Embeddings', concept: 'Context is a budget', artifact: 'A cluster map + token-cost calc' },
+      { n: 10, title: 'Pretraining vs Fine-Tuning', concept: 'Small + right beats big + lazy', artifact: 'A cost/accuracy benchmark' },
+      { n: 11, title: 'Hugging Face in Anger', concept: 'The ecosystem is the OS of applied AI', artifact: 'A model on your Hub account' },
+      { n: 12, title: 'Anatomy of an LLM', concept: 'Sampling = personality', artifact: 'A reliability report' },
+    ],
+  },
+  {
+    label: 'Quarter 3',
+    title: 'LLMs, Agents, Retrieval & Memory',
+    blurb: 'How modern systems actually work — and how they fail.',
+    sessions: [
+      { n: 13, title: 'Tools & Function Calling', concept: 'The model as an unreliable dispatcher', artifact: 'A working tool loop' },
+      { n: 14, title: 'The Agent Loop', concept: 'Plan → act → observe → reflect', artifact: 'An agent + its failure taxonomy' },
+      { n: 15, title: 'RAG, Properly', concept: 'Retrieval quality dominates', artifact: 'A cited RAG system' },
+      { n: 16, title: 'Memory', concept: 'Memory = a write/forget policy', artifact: 'An assistant that remembers' },
+      { n: 17, title: 'Evaluation', concept: 'Evals are tests for probabilistic systems', artifact: 'An eval suite in CI' },
+      { n: 18, title: 'Shipping It', concept: 'The last 10% is deployment', artifact: 'A live service + cost dashboard' },
+    ],
+  },
+  {
+    label: 'Quarter 4',
+    title: 'Autonomy, Applied AI & the Frontier',
+    blurb: 'Agents that run while you sleep, vision in the real world, and your capstone.',
+    sessions: [
+      { n: 19, title: 'Multi-Agent Systems', concept: 'Usually over-engineered', artifact: 'A decision memo + the kept version' },
+      { n: 20, title: 'Autonomy & Guardrails', concept: 'Autonomy is a spectrum', artifact: 'An overnight agent + audit log' },
+      { n: 21, title: 'Vision in the Real World', concept: 'The long tail and the operating point', artifact: 'A vision pipeline + PR curve' },
+      { n: 22, title: 'Voice & Audio', concept: 'Latency is the product', artifact: 'A voice agent + WER/latency' },
+      { n: 23, title: 'AI in the Business', concept: 'The ROI model and human-in-the-loop', artifact: 'A one-page business case' },
+      { n: 24, title: 'Capstone + Demo Day', concept: 'Synthesis and judgment', artifact: 'A live project + case study' },
+    ],
+  },
 ];
 ---
-<section id="courses" class="courses">
+
+<section class="curriculum" id="curriculum">
   <div class="container">
-    <h2>Our Courses</h2>
-    <p class="subtitle">Start free. Level up when you're ready.</p>
-    <div class="grid">
-      {courses.map(c => <CourseCard {...c} />)}
+    <h2>The 24 sessions</h2>
+    <p class="section-sub">
+      Two sessions a month for twelve months. The arc starts at "what even is AI"
+      and ends with you presenting a shipped system you built.
+    </p>
+
+    {quarters.map((q) => (
+      <div class="quarter">
+        <div class="quarter-head">
+          <span class="q-label">{q.label}</span>
+          <h3>{q.title}</h3>
+          <p>{q.blurb}</p>
+        </div>
+        <ol class="sessions">
+          {q.sessions.map((s) => (
+            <li class="session">
+              <span class="s-num">{String(s.n).padStart(2, '0')}</span>
+              <div class="s-body">
+                <h4>{s.title}</h4>
+                <p class="s-concept">{s.concept}</p>
+              </div>
+              <div class="s-artifact">
+                <span class="s-artifact-label">You leave with</span>
+                <span class="s-artifact-text">{s.artifact}</span>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    ))}
+
+    <div class="projects">
+      <h3>Eight portfolio projects</h3>
+      <p>
+        Each one has a technical bar and a business bar — plus a number.
+        No vibes. These are the artifacts that go on your LinkedIn and in
+        front of a client.
+      </p>
+      <div class="project-grid">
+        <div class="project"><strong>My First Model, Explained</strong><span>A trained model plus a one-page explainer</span></div>
+        <div class="project"><strong>The ML Pipeline, Shipped</strong><span>A live URL that takes input and returns a prediction</span></div>
+        <div class="project"><strong>Attention From Scratch</strong><span>Verified against PyTorch's own implementation</span></div>
+        <div class="project"><strong>The Expert Knowledge System</strong><span>RAG with citations, measured with Recall@k and MRR</span></div>
+        <div class="project"><strong>Ship It</strong><span>A production service with CI, tracing, and a cost dashboard</span></div>
+        <div class="project"><strong>The Agent That Works While You Sleep</strong><span>Scheduled, guarded, budgeted, with a full audit log</span></div>
+        <div class="project"><strong>The Vision Pipeline</strong><span>Detection, tracking, and a justified operating point</span></div>
+        <div class="project"><strong>The Capstone</strong><span>Your shipped AI product, presented on Demo Day</span></div>
+      </div>
     </div>
   </div>
 </section>
+
 <style>
-  .courses { padding: 60px 0 80px; }
-  h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; }
-  .subtitle { color: var(--text-muted); margin-top: 8px; font-size: 1.05rem; }
-  .grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px; margin-top: 36px;
+  .curriculum { padding: 70px 0 40px; }
+  h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 800; letter-spacing: -0.02em; }
+  .section-sub { color: var(--text-muted); margin: 14px 0 46px; max-width: 640px; }
+  .quarter { margin-bottom: 54px; }
+  .quarter-head { margin-bottom: 18px; }
+  .q-label {
+    color: var(--accent); font-size: 0.78rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .quarter-head h3 { font-size: 1.45rem; font-weight: 700; margin: 6px 0 6px; }
+  .quarter-head p { color: var(--text-muted); margin: 0; font-size: 0.97rem; }
+  .sessions { list-style: none; padding: 0; margin: 0; }
+  .session {
+    display: grid; grid-template-columns: 52px 1fr 260px; gap: 20px;
+    align-items: center; padding: 16px 20px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); margin-bottom: 8px;
+    transition: border-color .15s, background .15s;
+  }
+  .session:hover { border-color: rgba(16,185,129,0.4); background: var(--bg-card-hover); }
+  .s-num {
+    color: var(--accent); font-weight: 800; font-size: 1.05rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .s-body h4 { font-size: 1rem; font-weight: 700; margin: 0 0 3px; }
+  .s-concept { color: var(--text-dim); font-size: 0.88rem; margin: 0; }
+  .s-artifact { text-align: right; }
+  .s-artifact-label {
+    display: block; color: var(--text-dim); font-size: 0.7rem;
+    text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;
+  }
+  .s-artifact-text { color: var(--text-muted); font-size: 0.87rem; }
+  .projects { margin-top: 70px; padding-top: 46px; border-top: 1px solid var(--border); }
+  .projects h3 { font-size: 1.5rem; font-weight: 700; margin: 0 0 10px; }
+  .projects > p { color: var(--text-muted); margin: 0 0 26px; max-width: 620px; }
+  .project-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;
+  }
+  .project {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px 20px;
+  }
+  .project strong { display: block; font-size: 0.97rem; margin-bottom: 5px; }
+  .project span { color: var(--text-dim); font-size: 0.86rem; }
+  @media (max-width: 800px) {
+    .session { grid-template-columns: 40px 1fr; }
+    .s-artifact { grid-column: 2; text-align: left; }
   }
 </style>

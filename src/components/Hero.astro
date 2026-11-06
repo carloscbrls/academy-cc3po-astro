@@ -1,26 +1,111 @@
 <section class="hero">
   <div class="container">
-    <div class="badge">Free courses available</div>
-    <h1>CC3PO Academy</h1>
-    <p class="tagline">Learn to protect, optimize, and grow your digital presence.<br/>No tech jargon. Just results.</p>
-    <a href="#courses" class="cta">Explore Courses</a>
+    <div class="badge">Free · Twice monthly · Stockton, CA</div>
+    <h1>Build real AI systems.<br/>Start from the beginning.</h1>
+    <p class="tagline">
+      A former Tesla Vision engineer teaches you how machines actually learn —
+      and then how to ship a system that works. Every session you leave with
+      something that runs.
+    </p>
+    <div class="cta-row">
+      <a href="#apply" class="cta">Apply for a seat</a>
+      <a href="#curriculum" class="cta secondary">See the 24 sessions</a>
+    </div>
+    <ul class="proof">
+      <li><strong>24</strong> sessions over 12 months</li>
+      <li><strong>8</strong> portfolio projects</li>
+      <li><strong>$0</strong> to attend</li>
+    </ul>
   </div>
 </section>
+
+<section class="credibility">
+  <div class="container">
+    <div class="cred">
+      <div class="cred-icon">◈</div>
+      <div>
+        <h3>Taught by someone who shipped perception systems at highway speed</h3>
+        <p>
+          Most AI courses are taught by people who watched the tutorials.
+          This one is taught by someone who worked on Tesla's vision stack —
+          where the demo was 98% accurate and the fleet was not. That gap is
+          what this program exists to close.
+        </p>
+      </div>
+    </div>
+    <div class="cred-grid">
+      <div class="cred-item">
+        <h4>You'll build in 90 minutes</h4>
+        <p>Not take notes. Every session ends with a running artifact — a URL, a repo, a deployed service.</p>
+      </div>
+      <div class="cred-item">
+        <h4>No coding required to start</h4>
+        <p>The first four sessions need zero code. The technical track goes deeper when you're ready for it.</p>
+      </div>
+      <div class="cred-item">
+        <h4>Bring your own problem</h4>
+        <p>We solve real problems from the room. If you bring a business problem, we'll build it live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <style>
-  .hero { padding: 80px 0 60px; text-align: center; }
+  .hero { padding: 90px 0 70px; text-align: center; }
   .badge {
     display: inline-block; background: rgba(16,185,129,0.1); color: var(--accent);
     border: 1px solid rgba(16,185,129,0.2); border-radius: 999px;
-    padding: 6px 16px; font-size: 0.8rem; font-weight: 600;
-    margin-bottom: 24px;
+    padding: 6px 16px; font-size: 0.8rem; font-weight: 600; margin-bottom: 26px;
   }
-  h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
-  .tagline { color: var(--text-muted); font-size: 1.2rem; margin-top: 16px; max-width: 540px; margin-inline: auto; }
+  h1 {
+    font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800;
+    letter-spacing: -0.03em; line-height: 1.08;
+  }
+  .tagline {
+    color: var(--text-muted); font-size: 1.15rem; max-width: 640px;
+    margin: 20px auto 0; line-height: 1.65;
+  }
+  .cta-row { margin-top: 34px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
   .cta {
-    display: inline-block; margin-top: 32px;
-    background: var(--accent); color: #000; font-weight: 700;
-    padding: 14px 32px; border-radius: 999px; font-size: 1rem;
-    transition: background 0.2s;
+    display: inline-block; background: var(--accent); color: #000; font-weight: 700;
+    padding: 14px 32px; border-radius: 999px; font-size: 1rem; transition: background .2s;
   }
   .cta:hover { background: var(--accent-hover); }
+  .cta.secondary {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .cta.secondary:hover { background: var(--bg-card-hover); border-color: var(--accent); }
+  .proof {
+    list-style: none; display: flex; gap: 44px; justify-content: center;
+    margin: 48px 0 0; padding: 0; flex-wrap: wrap;
+  }
+  .proof li { color: var(--text-dim); font-size: 0.92rem; }
+  .proof strong {
+    display: block; color: var(--accent); font-size: 1.9rem; font-weight: 800;
+    line-height: 1.2;
+  }
+  .credibility { padding: 60px 0 30px; }
+  .cred {
+    display: flex; gap: 22px; align-items: flex-start;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 30px;
+  }
+  .cred-icon { color: var(--accent); font-size: 1.9rem; line-height: 1; }
+  .cred h3 { font-size: 1.22rem; font-weight: 700; margin: 0 0 10px; }
+  .cred p { color: var(--text-muted); margin: 0; font-size: 0.97rem; }
+  .cred-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px; margin-top: 20px;
+  }
+  .cred-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px;
+  }
+  .cred-item h4 { font-size: 1rem; font-weight: 700; margin: 0 0 8px; color: var(--accent); }
+  .cred-item p { color: var(--text-muted); font-size: 0.92rem; margin: 0; }
+  @media (max-width: 640px) {
+    .proof { gap: 26px; }
+    .cred { flex-direction: column; }
+  }
 </style>
