@@ -1,0 +1,129 @@
+---
+import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base
+  title="Privacy Notice"
+  description="What CC3PO AI Builders collects, why, and what you can ask us to delete. CC3PO LLC."
+>
+  <div class="container wrap">
+    <div class="badge">Policy</div>
+    <h1>Privacy Notice</h1>
+    <p class="lead">
+      CC3PO AI Builders · CC3PO LLC · Last updated: November 2026
+    </p>
+
+    <h2>The short version</h2>
+    <p>
+      We collect what we need to run the program. We don't sell it, we don't
+      share it, and we don't add you to lists you didn't ask for. You can ask
+      us to delete it, any time, and we'll do it.
+    </p>
+
+    <h2>Who we are</h2>
+    <p>
+      CC3PO LLC ("CC3PO", "we"). Operated by Carlos Cabrales.
+      Contact: <a href="mailto:legal@cc3po.com">legal@cc3po.com</a> ·
+      209-701-1137
+    </p>
+
+    <h2>What we collect</h2>
+    <p><strong>From the welcome &amp; intake form:</strong></p>
+    <ul>
+      <li>Name, email, phone, city</li>
+      <li>What you do (business owner, developer, student, etc.)</li>
+      <li>What you're building or running</li>
+      <li>Your coding comfort level</li>
+      <li>Access needs (optional, and it never affects whether you get a seat)</li>
+      <li>How you heard about us</li>
+    </ul>
+    <p><strong>From the assessments:</strong></p>
+    <ul>
+      <li>Your knowledge assessment score</li>
+      <li>Your self-assessment responses</li>
+    </ul>
+    <p><strong>From the media release:</strong></p>
+    <ul>
+      <li>Whether you consent to photos, video, name use, and testimonials</li>
+    </ul>
+    <p><strong>From attending:</strong></p>
+    <ul>
+      <li>Attendance records, per session</li>
+      <li>Feedback forms</li>
+    </ul>
+
+    <h2>From the labs: nothing</h2>
+    <p>
+      The demo runs on our own hardware. We do not collect what you type during
+      sessions. If you put data into a third-party tool yourself (ChatGPT,
+      Claude, Gemini), that tool's privacy policy applies — which is exactly
+      why we use synthetic and public data in class.
+    </p>
+
+    <h2>Your rights (California residents)</h2>
+    <p>
+      If you are a California resident, the CCPA/CPRA gives you the right to
+      know what personal information we hold about you, to request deletion,
+      to correct it, and to opt out of any sale or sharing of it. We do not
+      sell or share personal information as those terms are defined under the
+      CCPA, so there is nothing to opt out of. To exercise any right, email
+      <a href="mailto:legal@cc3po.com">legal@cc3po.com</a> and we will
+      respond within 45 days.
+    </p>
+
+    <h2>How long we keep it</h2>
+    <p>
+      Application and intake records are kept for 24 months, then deleted.
+      Attendance and assessment records are kept for 24 months so we can
+      report outcomes honestly to sponsors and funders. Media consent records
+      are kept for 24 months. Deletion requests are honoured immediately on
+      receipt, except where a record must be retained for legal or insurance
+      purposes.
+    </p>
+
+    <h2>Who can see it</h2>
+    <p>
+      Carlos Cabrales, and the volunteers who help run a session — for
+      attendance and safety. We share your name and employer with a sponsor
+      only in aggregate (for example, "11 business owners attended"), never
+      individually, unless you ask us to introduce you. We do not sell or
+      share personal information with third parties for their own marketing.
+    </p>
+
+    <h2>Your information, your call</h2>
+    <p>
+      You can ask us to delete your information, correct it, or stop using it
+      for any purpose. Email <a href="mailto:legal@cc3po.com">legal@cc3po.com</a>
+      and we will do it.
+    </p>
+
+    <p class="foot">
+      Contact: Carlos Cabrales · CC3PO LLC ·
+      <a href="mailto:legal@cc3po.com">legal@cc3po.com</a> · 209-701-1137
+    </p>
+  </div>
+  <Footer />
+</Base>
+<style>
+  .wrap { padding: 90px 0 60px; max-width: 720px; }
+  .badge {
+    display: inline-block; background: rgba(16,185,129,0.1); color: var(--accent);
+    border: 1px solid rgba(16,185,129,0.2); border-radius: 999px;
+    padding: 6px 16px; font-size: 0.8rem; font-weight: 600; margin-bottom: 22px;
+  }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; }
+  .lead { color: var(--text-dim); font-size: 0.95rem; margin: 14px 0 34px; }
+  h2 {
+    font-size: 1.15rem; font-weight: 700; margin: 36px 0 12px;
+    color: var(--text); letter-spacing: -0.01em;
+  }
+  p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin: 12px 0; }
+  ul { color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin: 12px 0 12px 20px; }
+  li { margin: 5px 0; }
+  strong { color: var(--text); }
+  a { color: var(--accent); }
+  .foot {
+    margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 0.88rem; color: var(--text-dim);
+  }
+</style>

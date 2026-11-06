@@ -1,0 +1,121 @@
+---
+import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base
+  title="Code of Conduct"
+  description="The rules for CC3PO AI Builders sessions — what we expect, what we don't tolerate, and how to report a problem. CC3PO LLC."
+>
+  <div class="container wrap">
+    <div class="badge">Policy</div>
+    <h1>Code of Conduct</h1>
+    <p class="lead">
+      CC3PO AI Builders · CC3PO LLC · Last updated: November 2026
+    </p>
+
+    <h2>Who this applies to</h2>
+    <p>
+      Everyone at a CC3PO AI Builders session — attendees, presenters,
+      sponsors, organizers, volunteers — and anyone acting on behalf of the
+      program online. It applies before, during, and after events, in program
+      spaces, and in program communications.
+    </p>
+    <p>
+      This program is for adults. Attendees must be 18 or older. We do not
+      admit minors to sessions, with or without a guardian.
+    </p>
+    <p>
+      Admission requires an approved application or a named invitation. Each
+      admission admits one named person and is personal and not transferable.
+      There are no plus-ones, substitutions, shared credentials, or
+      walk-ins. If you need accessibility support accompanying you, arrange it
+      with the organizer in advance and it will be recorded separately for
+      check-in.
+    </p>
+
+    <h2>What we expect</h2>
+    <ul>
+      <li>Be respectful, constructive, and professional.</li>
+      <li>Focus on technical substance and good-faith discussion.</li>
+      <li>Credit collaborators and sources. Describe your own role accurately. Don't claim someone else's work as your own.</li>
+      <li>Be straightforward and honest. Share evidence and uncertainty openly. Change your view when the facts change.</li>
+      <li>Disagree without personal attacks.</li>
+      <li>Respect differences in background, experience, and perspective.</li>
+      <li>Put the room first. Help the person next to you.</li>
+      <li>Protect other people's data. Never bring client, employer, patient, or customer information into a session.</li>
+    </ul>
+
+    <h2>What we don't tolerate</h2>
+    <ul>
+      <li>Harassment, intimidation, or discrimination of any kind.</li>
+      <li>Offensive comments about gender, gender identity, sexual orientation, race, ethnicity, national origin, religion, disability, age, or appearance.</li>
+      <li>Sexual language, imagery, or unwanted advances.</li>
+      <li>Deliberate disruption of sessions or demos.</li>
+      <li>Recording or photographing anyone who has asked not to be photographed.</li>
+      <li>Using another participant's work, code, or data without permission.</li>
+      <li>Soliciting participants for your own paid services during a session. Talking about your business is fine and encouraged.</li>
+    </ul>
+
+    <h2>Reporting a problem</h2>
+    <p>
+      If something happens that breaks this code, tell an organizer at the
+      session, or email
+      <a href="mailto:legal@cc3po.com">legal@cc3po.com</a>. You do not need
+      to have the whole story, and you do not need to have already left.
+      We take every report seriously, and we will not tell anyone who reported
+      a problem who reported it.
+    </p>
+
+    <h2>What happens next</h2>
+    <p>
+      An organizer will talk to the people involved, usually separately. Then
+      they will decide what to do. Depending on what happened, that can range
+      from a quiet word to a permanent ban from the program. We will tell the
+      person who reported what we decided, and we will tell the person who
+      was reported what we decided and why.
+    </p>
+
+    <h2>Accessibility</h2>
+    <p>
+      If something about the physical space, the schedule, or the format of a
+      session makes it hard for you to take part, tell the organizer. We would
+      rather adjust than lose you. Ask in advance if you can, but we will also
+      accommodate on the day.
+    </p>
+
+    <h2>Language</h2>
+    <p>
+      Sessions are taught in English. Spanish materials are available. Se
+      habla español — ask the organizer.
+    </p>
+
+    <p class="foot">
+      CC3PO AI Builders · CC3PO LLC ·
+      <a href="mailto:legal@cc3po.com">legal@cc3po.com</a> · 209-701-1137
+    </p>
+  </div>
+  <Footer />
+</Base>
+<style>
+  .wrap { padding: 90px 0 60px; max-width: 720px; }
+  .badge {
+    display: inline-block; background: rgba(16,185,129,0.1); color: var(--accent);
+    border: 1px solid rgba(16,185,129,0.2); border-radius: 999px;
+    padding: 6px 16px; font-size: 0.8rem; font-weight: 600; margin-bottom: 22px;
+  }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; }
+  .lead { color: var(--text-dim); font-size: 0.95rem; margin: 14px 0 34px; }
+  h2 {
+    font-size: 1.15rem; font-weight: 700; margin: 36px 0 12px;
+    color: var(--text); letter-spacing: -0.01em;
+  }
+  p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin: 12px 0; }
+  ul { color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin: 12px 0 12px 20px; }
+  li { margin: 5px 0; }
+  strong { color: var(--text); }
+  a { color: var(--accent); }
+  .foot {
+    margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 0.88rem; color: var(--text-dim);
+  }
+</style>
