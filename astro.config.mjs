@@ -1,2 +1,7 @@
 import { defineConfig } from 'astro/config';
-export default defineConfig({ site: 'https://academy.cc3po.com' });
+import sitemap from '@astrojs/sitemap';
+
+export default defineConfig({
+  site: 'https://academy.cc3po.com',
+  integrations: [sitemap()],
+});

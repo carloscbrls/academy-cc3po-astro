@@ -2,14 +2,47 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
+import GuideCapture from '../components/GuideCapture.astro';
 import Courses from '../components/Courses.astro';
 import Newsletter from '../components/Newsletter.astro';
 import Footer from '../components/Footer.astro';
+
+const courseJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'CC3PO AI Builders — Applied AI & Automation Lab',
+  description:
+    'A former Tesla Vision engineer teaches Stockton how to build real AI systems. Free, monthly to start, from first principles to shipped systems. 24 sessions over 12 months, 8 portfolio projects.',
+  provider: {
+    '@type': 'Organization',
+    name: 'CC3PO LLC',
+    sameAs: 'https://cc3po.com',
+  },
+  hasCourseInstance: {
+    '@type': 'CourseInstance',
+    courseMode: 'onsite',
+    courseWorkload: 'P12M',
+    location: {
+      '@type': 'Place',
+      name: 'Stockton, California',
+      address: { '@type': 'PostalAddress', addressLocality: 'Stockton', addressRegion: 'CA', addressCountry: 'US' },
+    },
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+    category: 'Free',
+  },
+};
 ---
-<Base title="CC3PO AI Builders" description="A former Tesla Vision engineer teaches Stockton how to build real AI systems. Free, monthly to start, from first principles to shipped systems.">
+<Base title="CC3PO AI Builders" description="A former Tesla Vision engineer teaches Stockton how to build real AI systems. Free, monthly to start, from first principles to shipped systems." jsonLd={courseJsonLd}>
   <Nav />
-  <Hero />
-  <Courses />
-  <Newsletter />
+  <main id="main-content">
+    <Hero />
+    <GuideCapture />
+    <Courses />
+    <Newsletter />
+  </main>
   <Footer />
 </Base>
