@@ -96,7 +96,7 @@ const eventLd = {
             {g.items.map((s) => (
               <li>
                 <span class="s-num mono">{String(s.n).padStart(2, '0')}</span>
-                <span class="s-title">{s.title}{s.n === 24 ? (es ? ' — Demo Day' : ' — Demo Day') : ''}</span>
+                <span class="s-title">{s.title}</span>
                 <a class="ics" href={`/calendar/session-${String(s.n).padStart(2, '0')}.ics`} download>{es ? 'Guardar fecha (.ics)' : 'Save date (.ics)'}</a>
               </li>
             ))}
