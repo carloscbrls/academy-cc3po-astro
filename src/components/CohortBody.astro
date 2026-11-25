@@ -1,0 +1,143 @@
+---
+// Cohort 1 — the founding cohort page body. The calendar renders the
+// documented cadence (sessions 1–6 monthly from January 2027, then
+// twice monthly; two-hour evenings, Stockton, 20 seats). Exact
+// evenings are a program input (src/config/academy.mjs → exactDates);
+// until they are set, rows show the month and the .ics files are
+// month markers — labeled as such, never dressed up as real dates.
+import RsvpForm from './RsvpForm.astro';
+import { cohort, sessionMonth, monthLabel } from '../config/academy.mjs';
+import { sessions } from '../data/curriculum.mjs';
+
+export interface Props { lang?: 'en' | 'es' }
+const { lang = 'en' } = Astro.props;
+const es = lang === 'es';
+
+// Group sessions by their cadence month.
+const groups = new Map();
+for (const s of sessions) {
+  const { year, month } = sessionMonth(s.n);
+  const key = `${year}-${String(month).padStart(2, '0')}`;
+  if (!groups.has(key)) groups.set(key, { year, month, label: monthLabel(s.n, lang), items: [] });
+  groups.get(key).items.push(s);
+}
+const calendar = [...groups.values()];
+
+const exact1 = cohort.exactDates[1];
+const exact24 = cohort.exactDates[24];
+const eventLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: es ? 'CC3PO AI Builders — Sesión 1: ¿Qué es la IA, en realidad?' : 'CC3PO AI Builders — Session 1: What Is AI, Actually?',
+  startDate: exact1 ?? '2027-01',
+  ...(exact24 ? {} : {}),
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: 'Stockton, California',
+    address: { '@type': 'PostalAddress', addressLocality: 'Stockton', addressRegion: 'CA', addressCountry: 'US' },
+  },
+  description: es
+    ? 'La primera sesión del CC3PO AI Builders Lab — la cohorte fundadora. Sesiones de dos horas en la tarde-noche, una vez al mes al principio. Gratis; un depósito reembolsable asegura tu lugar.'
+    : 'The first session of the CC3PO AI Builders Lab — the founding cohort. Two-hour evening sessions, monthly to start. Free to attend; a refundable commitment deposit holds your seat.',
+  organizer: { '@type': 'Organization', name: 'CC3PO LLC', url: 'https://cc3po.com' },
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', category: 'Free', availability: 'https://schema.org/LimitedAvailability' },
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(eventLd)} />
+
+<section class="cohort-hero">
+  <div class="container">
+    <span class="kicker mono">{es ? 'Cohorte 1 · La cohorte fundadora' : 'Cohort 1 · The founding cohort'}</span>
+    <h1>{es ? 'Enero de 2027. Veinte lugares. Una sala que construye.' : 'January 2027. Twenty seats. One room that builds.'}</h1>
+    <p class="intro">
+      {es
+        ? 'El CC3PO AI Builders Lab abre su primera cohorte en enero de 2027 en Stockton. Sesiones de dos horas en la tarde-noche: una vez al mes durante las primeras seis, dos veces al mes después. Asistir es gratis — un depósito de compromiso reembolsable asegura tu lugar.'
+        : 'The CC3PO AI Builders Lab opens its first cohort in January 2027 in Stockton. Two-hour evening sessions: monthly for the first six, twice monthly after that. Attendance is free — a refundable commitment deposit holds your seat.'}
+    </p>
+    <ul class="facts">
+      <li><strong>20</strong> {es ? 'lugares' : 'seats'}</li>
+      <li><strong>24</strong> {es ? 'sesiones' : 'sessions'}</li>
+      <li><strong>2h</strong> {es ? 'por sesión, en la tarde-noche' : 'per session, evenings'}</li>
+      <li><strong>{es ? 'Ene 2027' : 'Jan 2027'}</strong> {es ? 'primera sesión' : 'first session'}</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cohort-rsvp">
+  <div class="container rsvp-grid">
+    <div>
+      <h2>{es ? 'Ven a la primera y mira si es para ti' : 'Come to one and see if it’s for you'}</h2>
+      <p>
+        {es
+          ? 'Sin compromiso. Reserva un lugar de invitado en la Sesión 1 — «¿Qué es la IA, en realidad?» — y decide después de ver cómo trabaja la sala.'
+          : 'No obligation. Save a guest seat at Session 1 — "What Is AI, Actually?" — and decide after you\'ve seen how the room works.'}
+      </p>
+    </div>
+    <RsvpForm lang={lang} session={1} />
+  </div>
+</section>
+
+<section class="cohort-calendar">
+  <div class="container">
+    <h2>{es ? 'El calendario de la cohorte' : 'The cohort calendar'}</h2>
+    <p class="cal-note">
+      {es
+        ? 'Las primeras seis sesiones son mensuales; después, dos por mes. Las tardes exactas se confirman con la cohorte antes de abrir puertas — los archivos de calendario marcan el mes por ahora y se actualizan en cuanto se fijen las fechas.'
+        : 'The first six sessions run monthly; after that, two a month. Exact evenings are confirmed with the cohort before doors open — the calendar files mark the month for now and update the moment dates are set.'}
+      {' '}<a href="/calendar/cohort-1.ics" download>{es ? 'Descargar el calendario completo (.ics)' : 'Download the full calendar (.ics)'}</a>
+    </p>
+    <div class="cal-list">
+      {calendar.map((g) => (
+        <div class="cal-month">
+          <h3 class="mono">{g.label}</h3>
+          <ul>
+            {g.items.map((s) => (
+              <li>
+                <span class="s-num mono">{String(s.n).padStart(2, '0')}</span>
+                <span class="s-title">{s.title}{s.n === 24 ? (es ? ' — Demo Day' : ' — Demo Day') : ''}</span>
+                <a class="ics" href={`/calendar/session-${String(s.n).padStart(2, '0')}.ics`} download>{es ? 'Guardar fecha (.ics)' : 'Save date (.ics)'}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <p class="cal-apply">
+      {es
+        ? <>¿Quieres uno de los 20 lugares, no solo visitar? <a href="/es/apply">Solicítalo aquí</a>.</>
+        : <>Want one of the 20 seats, not just a visit? <a href="/apply">Apply here</a>.</>}
+    </p>
+  </div>
+</section>
+
+<style>
+  .cohort-hero { padding: 70px 0 30px; }
+  .kicker { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  h1 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 800; letter-spacing: -0.02em; margin: 14px 0 16px; max-width: 780px; }
+  .intro { color: var(--text-muted); font-size: 1.08rem; max-width: 680px; line-height: 1.65; }
+  .facts { list-style: none; display: flex; gap: 40px; flex-wrap: wrap; margin: 34px 0 0; padding: 0; }
+  .facts li { color: var(--text-dim); font-size: 0.92rem; }
+  .facts strong { display: block; color: var(--accent); font-size: 1.7rem; font-weight: 800; line-height: 1.2; }
+  .cohort-rsvp { padding: 30px 0 10px; }
+  .rsvp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; align-items: start; }
+  h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .rsvp-grid p { color: var(--text-muted); line-height: 1.65; }
+  .cohort-calendar { padding: 50px 0 70px; }
+  .cal-note { color: var(--text-muted); max-width: 720px; margin-bottom: 28px; }
+  .cal-note a, .cal-apply a { color: var(--accent); font-weight: 600; text-decoration: underline; }
+  .cal-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+  .cal-month {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px 20px;
+  }
+  .cal-month h3 { font-size: 0.85rem; font-weight: 700; color: var(--accent); text-transform: capitalize; margin-bottom: 10px; }
+  .cal-month ul { list-style: none; padding: 0; margin: 0; }
+  .cal-month li { display: flex; gap: 10px; align-items: baseline; padding: 5px 0; font-size: 0.92rem; }
+  .s-num { color: var(--accent); font-weight: 700; font-size: 0.85rem; }
+  .s-title { flex: 1; }
+  .ics { color: var(--text-dim); font-size: 0.8rem; font-weight: 600; padding: 6px 4px; }
+  .ics:hover { color: var(--accent); }
+  .cal-apply { color: var(--text-muted); margin-top: 26px; }
+</style>

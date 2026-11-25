@@ -1,0 +1,20 @@
+---
+// The standing crisis-line rule covers Lab materials: every public
+// surface where heavy content runs carries the lines. Wording is the
+// fleet's standard sentence, verbatim.
+export interface Props { lang?: 'en' | 'es' }
+const { lang = 'en' } = Astro.props;
+---
+<p class="support-note">
+  {lang === 'es'
+    ? <>Si estás pasando por un momento difícil: llama o envía un mensaje de texto al <strong>988</strong> (Línea de Prevención del Suicidio y Crisis, EE. UU.) o envía <strong>TALK</strong> al <strong>741741</strong> (Crisis Text Line).</>
+    : <>If you're struggling: call or text <strong>988</strong> (US Suicide and Crisis Lifeline) or text <strong>TALK</strong> to <strong>741741</strong> (Crisis Text Line).</>}
+</p>
+<style>
+  .support-note {
+    color: var(--text-dim); font-size: 0.82rem; line-height: 1.55;
+    margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border);
+    max-width: 640px;
+  }
+  .support-note strong { color: var(--text-muted); }
+</style>

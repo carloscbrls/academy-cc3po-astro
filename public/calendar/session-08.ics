@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CC3PO//Academy//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:academy-session-8@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270701
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 8: Attention (evening to be confirmed — 2027-07)
+DESCRIPTION:You leave with: Your own attention implementation. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+END:VCALENDAR

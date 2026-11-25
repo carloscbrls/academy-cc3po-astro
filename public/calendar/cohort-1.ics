@@ -1,0 +1,221 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CC3PO//Academy//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:academy-session-1@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270101
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 1: What Is AI\, Actually? (evening to be confirmed — 2027-01)
+DESCRIPTION:You leave with: A comparison note. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-2@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270201
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 2: A History of AI (evening to be confirmed — 2027-02)
+DESCRIPTION:You leave with: Your history paragraph. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-3@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270301
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 3: How a Machine Learns From Data (evening to be confirmed — 2027-03)
+DESCRIPTION:You leave with: A confusion matrix. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-4@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270401
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 4: Foundations Capstone (evening to be confirmed — 2027-04)
+DESCRIPTION:You leave with: A live URL. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-5@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270501
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 5: Linear Algebra Without Torture (evening to be confirmed — 2027-05)
+DESCRIPTION:You leave with: A 2D embedding map. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-6@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270601
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 6: Neural Networks (evening to be confirmed — 2027-06)
+DESCRIPTION:You leave with: A loss curve + a deliberate failure. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-7@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270701
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 7: Convolutional Networks (evening to be confirmed — 2027-07)
+DESCRIPTION:You leave with: A heatmap on your own photos. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-8@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270701
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 8: Attention (evening to be confirmed — 2027-07)
+DESCRIPTION:You leave with: Your own attention implementation. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-9@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270801
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 9: Tokens & Embeddings (evening to be confirmed — 2027-08)
+DESCRIPTION:You leave with: A cluster map + token-cost calc. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-10@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270801
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 10: Pretraining vs Fine-Tuning (evening to be confirmed — 2027-08)
+DESCRIPTION:You leave with: A cost/accuracy benchmark. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-11@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270901
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 11: Hugging Face in Anger (evening to be confirmed — 2027-09)
+DESCRIPTION:You leave with: A model on your Hub account. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-12@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20270901
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 12: Anatomy of an LLM (evening to be confirmed — 2027-09)
+DESCRIPTION:You leave with: A reliability report. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-13@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20271001
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 13: Tools & Function Calling (evening to be confirmed — 2027-10)
+DESCRIPTION:You leave with: A working tool loop. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-14@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20271001
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 14: The Agent Loop (evening to be confirmed — 2027-10)
+DESCRIPTION:You leave with: An agent + its failure taxonomy. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-15@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20271101
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 15: RAG\, Properly (evening to be confirmed — 2027-11)
+DESCRIPTION:You leave with: A cited RAG system. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-16@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20271101
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 16: Memory (evening to be confirmed — 2027-11)
+DESCRIPTION:You leave with: An assistant that remembers. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-17@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20271201
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 17: Evaluation (evening to be confirmed — 2027-12)
+DESCRIPTION:You leave with: An eval suite in CI. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-18@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20271201
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 18: Shipping It (evening to be confirmed — 2027-12)
+DESCRIPTION:You leave with: A live service + cost dashboard. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-19@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20280101
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 19: Multi-Agent Systems (evening to be confirmed — 2028-01)
+DESCRIPTION:You leave with: A decision memo + the kept version. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-20@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20280101
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 20: Autonomy & Guardrails (evening to be confirmed — 2028-01)
+DESCRIPTION:You leave with: An overnight agent + audit log. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-21@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20280201
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 21: Vision in the Real World (evening to be confirmed — 2028-02)
+DESCRIPTION:You leave with: A vision pipeline + PR curve. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-22@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20280201
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 22: Voice & Audio (evening to be confirmed — 2028-02)
+DESCRIPTION:You leave with: A voice agent + WER/latency. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-23@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20280301
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 23: AI in the Business (evening to be confirmed — 2028-03)
+DESCRIPTION:You leave with: A one-page business case. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+BEGIN:VEVENT
+UID:academy-session-24@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20280301
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 24: Capstone + Demo Day (evening to be confirmed — 2028-03)
+DESCRIPTION:You leave with: A live project + case study. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+END:VCALENDAR

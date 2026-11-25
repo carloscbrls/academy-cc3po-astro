@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { deposit } from '../config/academy.mjs';
+---
+<Base title="Employers & Community Partners" description="The one-page summary for employers and community partners: what the CC3PO AI Builders Lab is, what your people get, and how to take part. Free pilot year, Stockton, CA.">
+  <Nav />
+  <main id="main-content">
+    <section class="p-hero">
+      <div class="container">
+        <span class="kicker mono">For employers & community partners</span>
+        <h1>Your people leave with systems that run.</h1>
+        <p class="intro">
+          The CC3PO AI Builders Lab — "CC3PO AI Builders: From First Principles
+          to Shipped Systems" — is a hands-on AI and automation program taught
+          in Stockton by a former Tesla Vision engineer. The pilot year is
+          free. This page is the one-page summary; the PDF below is the same
+          page, ready to forward.
+        </p>
+        <div class="cta-row">
+          <a class="cta" href="/downloads/employer-one-pager.pdf" download>Download the one-pager (PDF)</a>
+          <a class="cta secondary" href="/apply">Send your people to apply</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-body">
+      <div class="container cols">
+        <div class="col">
+          <h2>What your people get</h2>
+          <ul class="ticks">
+            <li><strong>24 working sessions over 12 months</strong> — two-hour evenings, monthly to start. Every session ends with a running artifact: a live URL, a workflow, a deployed service.</li>
+            <li><strong>Two tracks.</strong> Operator (zero code — n8n, Make, Dify, Sheets) for staff who run operations; Builder (Python, FastAPI, Docker, GitHub) for technical staff.</li>
+            <li><strong>8 portfolio projects</strong>, each with a technical bar and a business bar. The artifact is the credential — your people can show what they built, not just that they attended.</li>
+            <li><strong>Real problems from the room.</strong> Members bring their own business problems and build them live — the work product goes back to the workplace.</li>
+            <li><strong>Demo Day.</strong> The cohort presents its shipped systems publicly at the end of the run.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h2>What it costs, honestly</h2>
+          <ul class="ticks">
+            <li><strong>Free for the pilot year</strong> — for individuals, and for residents and staff of partner organizations.</li>
+            <li><strong>A {deposit.rangeLabel} commitment deposit</strong> per seat, refunded on attendance. It exists so the 20 seats go to people who show up.</li>
+            <li><strong>Time:</strong> one two-hour evening a month to start. That's the whole ask of your schedule.</li>
+          </ul>
+          <h2>How to take part</h2>
+          <ul class="ticks">
+            <li><strong>Send people:</strong> point them at the application — a human reads every one.</li>
+            <li><strong>Partner with the Lab:</strong> community organizations can refer residents and staff, and talk with us about hosting or supporting a cohort. Call <a href="tel:+12097011137">209-701-1137</a>.</li>
+            <li><strong>Come see it first:</strong> RSVP for Session 1 on the <a href="/cohort">cohort page</a> — no obligation.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+<style>
+  .p-hero { padding: 70px 0 30px; }
+  .kicker { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  h1 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 800; letter-spacing: -0.02em; margin: 14px 0 16px; max-width: 760px; }
+  .intro { color: var(--text-muted); font-size: 1.08rem; max-width: 700px; line-height: 1.65; }
+  .cta-row { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .cta {
+    display: inline-block; background: var(--accent-strong); color: var(--brand-paper); font-weight: 700;
+    padding: 13px 28px; border-radius: 999px; font-size: 0.98rem;
+  }
+  .cta:hover { background: var(--accent-strong); box-shadow: 0 0 0 2px var(--accent-hover); }
+  .cta.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .cta.secondary:hover { background: var(--bg-card-hover); border-color: var(--border-accent); }
+  .p-body { padding: 30px 0 80px; }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+  h2 { font-size: 1.3rem; font-weight: 700; margin: 0 0 14px; }
+  .col h2:not(:first-child) { margin-top: 32px; }
+  .ticks { list-style: none; padding: 0; margin: 0; }
+  .ticks li {
+    color: var(--text-muted); font-size: 0.96rem; line-height: 1.6;
+    padding: 9px 0 9px 22px; position: relative; border-bottom: 1px solid var(--border);
+  }
+  .ticks li::before { content: '▸'; color: var(--accent); position: absolute; left: 0; }
+  .ticks a { color: var(--accent); font-weight: 600; text-decoration: underline; }
+</style>

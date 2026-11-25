@@ -1,0 +1,67 @@
+---
+// "Which room is yours" — the track fork. Both rooms share the first
+// four sessions and the same 24-session arc; the rooms differ in how
+// you build. Facts: the Lab deck's two tracks (public level).
+import { tracks } from '../data/curriculum.mjs';
+export interface Props { lang?: 'en' | 'es' }
+const { lang = 'en' } = Astro.props;
+const es = lang === 'es';
+const base = es ? '/es/tracks' : '/tracks';
+---
+<section class="fork" id="tracks">
+  <div class="container">
+    <h2>{es ? '¿Cuál es tu salón?' : 'Which room is yours?'}</h2>
+    <p class="section-sub">
+      {es
+        ? 'Dos modalidades, un mismo programa. Las primeras cuatro sesiones son compartidas y no necesitan nada de código — eliges tu salón por cómo quieres construir, no por lo que ya sabes.'
+        : 'Two tracks, one program. The first four sessions are shared and need zero code — you pick your room by how you want to build, not by what you already know.'}
+    </p>
+    <div class="fork-grid">
+      <article class="fork-card">
+        <span class="fork-label mono">{es ? 'Modalidad 01' : 'Track 01'}</span>
+        <h3>{tracks.operator.name} — {tracks.operator.tagline}</h3>
+        <p>
+          {es
+            ? 'Diriges o trabajas en algo y quieres que la IA haga el trabajo repetitivo. Construyes con herramientas sin código y te llevas flujos que corren en tu negocio.'
+            : 'You run or work in a business and want AI doing the repetitive work. You build with zero-code tools and leave with workflows that run in your operation.'}
+        </p>
+        <p class="fork-stack mono">{tracks.operator.stackLine}</p>
+        <a class="fork-link" href={`${base}/operator`}>{es ? 'Ver la modalidad Operator' : 'See the Operator track'} →</a>
+      </article>
+      <article class="fork-card">
+        <span class="fork-label mono">{es ? 'Modalidad 02' : 'Track 02'}</span>
+        <h3>{tracks.builder.name} — {tracks.builder.tagline}</h3>
+        <p>
+          {es
+            ? 'Quieres escribir el código tú mismo — de los primeros principios al servicio en producción. La misma ruta, con la profundidad técnica completa.'
+            : 'You want to write the code yourself — from first principles to a production service. The same arc, at full technical depth.'}
+        </p>
+        <p class="fork-stack mono">{tracks.builder.stackLine}</p>
+        <a class="fork-link" href={`${base}/builder`}>{es ? 'Ver la modalidad Builder' : 'See the Builder track'} →</a>
+      </article>
+    </div>
+    <p class="fork-unsure">
+      {es
+        ? <>¿No estás seguro? <a href="/es/apply">Solicita igual</a> — dinos qué estás construyendo y te ubicamos en el salón correcto.</>
+        : <>Not sure? <a href="/apply">Apply anyway</a> — tell us what you're building and we'll place you in the right room.</>}
+    </p>
+  </div>
+</section>
+<style>
+  .fork { padding: 60px 0 10px; }
+  h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 800; letter-spacing: -0.02em; }
+  .section-sub { color: var(--text-muted); margin: 14px 0 34px; max-width: 640px; }
+  .fork-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 16px; }
+  .fork-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+  }
+  .fork-label { color: var(--accent); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .fork-card h3 { font-size: 1.25rem; font-weight: 700; margin: 10px 0 10px; }
+  .fork-card p { color: var(--text-muted); font-size: 0.95rem; margin: 0 0 14px; }
+  .fork-stack { color: var(--text-dim); font-size: 0.85rem; }
+  .fork-link { color: var(--accent); font-weight: 700; font-size: 0.95rem; display: inline-block; padding: 8px 0; }
+  .fork-link:hover { color: var(--accent-tint); }
+  .fork-unsure { color: var(--text-muted); margin-top: 22px; font-size: 0.95rem; }
+  .fork-unsure a { color: var(--accent); font-weight: 600; text-decoration: underline; }
+</style>

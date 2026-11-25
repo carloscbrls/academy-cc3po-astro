@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CC3PO//Academy//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:academy-session-19@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20280101
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 19: Multi-Agent Systems (evening to be confirmed — 2028-01)
+DESCRIPTION:You leave with: A decision memo + the kept version. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+END:VCALENDAR

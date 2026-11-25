@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Hero from '../../components/Hero.astro';
+import GuideCapture from '../../components/GuideCapture.astro';
+import Fork from '../../components/Fork.astro';
+import Courses from '../../components/Courses.astro';
+import Faq from '../../components/Faq.astro';
+import Footer from '../../components/Footer.astro';
+---
+<Base lang="es" title="CC3PO AI Builders — en español" description="Un ex ingeniero de Tesla Vision enseña en Stockton a construir sistemas reales de IA. Gratis, una vez al mes al principio, desde los primeros principios hasta sistemas en producción.">
+  <Nav lang="es" altHref="/" />
+  <main id="main-content">
+    <Hero lang="es" />
+    <GuideCapture lang="es" />
+    <Fork lang="es" />
+    <Courses lang="es" />
+    <Faq lang="es" />
+    <section class="apply-teaser" id="apply">
+      <div class="container">
+        <h2>Solicita tu lugar</h2>
+        <p>
+          Veinte lugares. Cada solicitud la lee una persona. Buscamos gente que
+          está construyendo o dirigiendo algo — no gente coleccionando certificados.
+        </p>
+        <a class="cta" href="/es/apply">Solicitar en 2 minutos</a>
+        <a class="cta secondary" href="/es/cohort">Ver el calendario de la cohorte</a>
+      </div>
+    </section>
+  </main>
+  <Footer lang="es" />
+</Base>
+<style>
+  .apply-teaser { padding: 20px 0 80px; }
+  .apply-teaser h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 800; letter-spacing: -0.02em; }
+  .apply-teaser p { color: var(--text-muted); margin: 14px 0 26px; max-width: 640px; }
+  .cta {
+    display: inline-block; background: var(--accent-strong); color: var(--brand-paper); font-weight: 700;
+    padding: 14px 32px; border-radius: 999px; font-size: 1rem; margin-right: 12px;
+  }
+  .cta:hover { background: var(--accent-strong); box-shadow: 0 0 0 2px var(--accent-hover); }
+  .cta.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .cta.secondary:hover { background: var(--bg-card-hover); border-color: var(--border-accent); }
+</style>

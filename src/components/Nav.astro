@@ -1,20 +1,41 @@
+---
+export interface Props {
+  lang?: 'en' | 'es';
+  altHref?: string;
+}
+const { lang = 'en', altHref } = Astro.props;
+const es = lang === 'es';
+const home = es ? '/es' : '/';
+const t = es
+  ? { curriculum: 'Plan de estudios', tracks: 'Modalidades', cohort: 'Cohorte', faq: 'Preguntas frecuentes', apply: 'Solicitar', altLabel: 'English' }
+  : { curriculum: 'Curriculum', tracks: 'Tracks', cohort: 'Cohort', faq: 'FAQ', apply: 'Apply', altLabel: 'Español' };
+const alt = altHref ?? (es ? '/' : '/es');
+---
 <header class="nav">
   <div class="container nav-inner">
-    <a href="/" class="logo">CC3PO <span>AI Builders</span></a>
+    <a href={home} class="logo">CC3PO <span>AI Builders</span></a>
     <nav>
-      <a href="#curriculum">Curriculum</a>
-      <a href="#apply">Apply</a>
-      <a href="https://cc3po.com">cc3po.com</a>
+      <a href={`${home}#curriculum`}>{t.curriculum}</a>
+      <a href={`${home}#tracks`}>{t.tracks}</a>
+      <a href={es ? '/es/cohort' : '/cohort'}>{t.cohort}</a>
+      <a href={`${home}#faq`} class="hide-sm">{t.faq}</a>
+      <a href={alt} hreflang={es ? 'en' : 'es'}>{t.altLabel}</a>
+      <a href={es ? '/es/apply' : '/apply'} class="nav-apply">{t.apply}</a>
     </nav>
   </div>
 </header>
 <style>
-  .nav { border-bottom: 1px solid var(--border); padding: 16px 0; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(8px); z-index: 50; }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-  .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; }
+  .nav { border-bottom: 1px solid var(--border); padding: 16px 0; position: sticky; top: 0; background: color-mix(in srgb, var(--brand-night) 92%, transparent); backdrop-filter: blur(8px); z-index: 50; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; white-space: nowrap; }
   .logo span { color: var(--accent); }
-  nav { display: flex; gap: 24px; }
-  nav a { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  nav { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+  nav a:not(.nav-apply) { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; padding: 8px 0; }
   nav a:hover { color: var(--accent); }
-  @media (max-width: 640px) { nav a:first-child { display: none; } }
+  .nav-apply {
+    background: var(--accent-strong); color: var(--brand-paper); font-weight: 700;
+    padding: 9px 18px; border-radius: 999px;
+  }
+  .nav-apply:hover { background: var(--accent-strong); box-shadow: 0 0 0 2px var(--accent-hover); color: var(--brand-paper); }
+  @media (max-width: 760px) { .hide-sm { display: none; } nav { gap: 16px; } }
 </style>

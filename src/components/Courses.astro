@@ -1,66 +1,20 @@
 ---
-const quarters = [
-  {
-    label: 'Quarter 1',
-    title: 'Orientation & First Principles',
-    blurb: 'What AI actually is, what it is not, and how a machine learns from data.',
-    sessions: [
-      { n: 1, title: 'What Is AI, Actually?', concept: 'Prediction machine, not a mind', artifact: 'A comparison note' },
-      { n: 2, title: 'A History of AI', concept: 'Winters = scaling & expectation failures', artifact: 'Your history paragraph' },
-      { n: 3, title: 'How a Machine Learns From Data', concept: 'The generalization gap', artifact: 'A confusion matrix' },
-      { n: 4, title: 'Foundations Capstone', concept: 'An AI product is a pipeline', artifact: 'A live URL' },
-      { n: 5, title: 'Linear Algebra Without Torture', concept: 'Vectors = meanings', artifact: 'A 2D embedding map' },
-      { n: 6, title: 'Neural Networks', concept: 'Gradient descent on a number', artifact: 'A loss curve + a deliberate failure' },
-    ],
-  },
-  {
-    label: 'Quarter 2',
-    title: 'Neural Networks & Transformers',
-    blurb: 'From a single neuron to attention — the machinery behind every LLM.',
-    sessions: [
-      { n: 7, title: 'Convolutional Networks', concept: 'Locality and learned filters', artifact: 'A heatmap on your own photos' },
-      { n: 8, title: 'Attention', concept: 'Lookup, weight, average, repeat', artifact: 'Your own attention implementation' },
-      { n: 9, title: 'Tokens & Embeddings', concept: 'Context is a budget', artifact: 'A cluster map + token-cost calc' },
-      { n: 10, title: 'Pretraining vs Fine-Tuning', concept: 'Small + right beats big + lazy', artifact: 'A cost/accuracy benchmark' },
-      { n: 11, title: 'Hugging Face in Anger', concept: 'The ecosystem is the OS of applied AI', artifact: 'A model on your Hub account' },
-      { n: 12, title: 'Anatomy of an LLM', concept: 'Sampling = personality', artifact: 'A reliability report' },
-    ],
-  },
-  {
-    label: 'Quarter 3',
-    title: 'LLMs, Agents, Retrieval & Memory',
-    blurb: 'How modern systems actually work — and how they fail.',
-    sessions: [
-      { n: 13, title: 'Tools & Function Calling', concept: 'The model as an unreliable dispatcher', artifact: 'A working tool loop' },
-      { n: 14, title: 'The Agent Loop', concept: 'Plan → act → observe → reflect', artifact: 'An agent + its failure taxonomy' },
-      { n: 15, title: 'RAG, Properly', concept: 'Retrieval quality dominates', artifact: 'A cited RAG system' },
-      { n: 16, title: 'Memory', concept: 'Memory = a write/forget policy', artifact: 'An assistant that remembers' },
-      { n: 17, title: 'Evaluation', concept: 'Evals are tests for probabilistic systems', artifact: 'An eval suite in CI' },
-      { n: 18, title: 'Shipping It', concept: 'The last 10% is deployment', artifact: 'A live service + cost dashboard' },
-    ],
-  },
-  {
-    label: 'Quarter 4',
-    title: 'Autonomy, Applied AI & the Frontier',
-    blurb: 'Agents that run while you sleep, vision in the real world, and your capstone.',
-    sessions: [
-      { n: 19, title: 'Multi-Agent Systems', concept: 'Usually over-engineered', artifact: 'A decision memo + the kept version' },
-      { n: 20, title: 'Autonomy & Guardrails', concept: 'Autonomy is a spectrum', artifact: 'An overnight agent + audit log' },
-      { n: 21, title: 'Vision in the Real World', concept: 'The long tail and the operating point', artifact: 'A vision pipeline + PR curve' },
-      { n: 22, title: 'Voice & Audio', concept: 'Latency is the product', artifact: 'A voice agent + WER/latency' },
-      { n: 23, title: 'AI in the Business', concept: 'The ROI model and human-in-the-loop', artifact: 'A one-page business case' },
-      { n: 24, title: 'Capstone + Demo Day', concept: 'Synthesis and judgment', artifact: 'A live project + case study' },
-    ],
-  },
-];
+// The curriculum renders from src/data/curriculum.mjs — the single
+// source the track pages, cohort calendar, guide PDF, and .ics files
+// also read. Copy below is the site's published copy, verbatim.
+import { quarters, projects } from '../data/curriculum.mjs';
+export interface Props { lang?: 'en' | 'es' }
+const { lang = 'en' } = Astro.props;
+const es = lang === 'es';
 ---
 
 <section class="curriculum" id="curriculum">
   <div class="container">
-    <h2>The 24 sessions</h2>
+    <h2>{es ? 'Las 24 sesiones' : 'The 24 sessions'}</h2>
     <p class="section-sub">
-      Monthly to start, twice monthly once the room holds. The arc starts at
-      "what even is AI" and ends with you presenting a shipped system you built.
+      {es
+        ? 'Una vez al mes al principio; dos veces al mes cuando el grupo se consolide. El recorrido empieza en «¿qué es la IA?» y termina contigo presentando un sistema que construiste y que ya está en producción.'
+        : 'Monthly to start, twice monthly once the room holds. The arc starts at "what even is AI" and ends with you presenting a shipped system you built.'}
     </p>
 
     {quarters.map((q) => (
@@ -73,13 +27,13 @@ const quarters = [
         <ol class="sessions">
           {q.sessions.map((s) => (
             <li class="session">
-              <span class="s-num">{String(s.n).padStart(2, '0')}</span>
+              <span class="s-num mono">{String(s.n).padStart(2, '0')}</span>
               <div class="s-body">
                 <h4>{s.title}</h4>
                 <p class="s-concept">{s.concept}</p>
               </div>
               <div class="s-artifact">
-                <span class="s-artifact-label">You leave with</span>
+                <span class="s-artifact-label">{es ? 'Te llevas' : 'You leave with'}</span>
                 <span class="s-artifact-text">{s.artifact}</span>
               </div>
             </li>
@@ -89,21 +43,16 @@ const quarters = [
     ))}
 
     <div class="projects">
-      <h3>Eight portfolio projects</h3>
+      <h3>{es ? 'Ocho proyectos de portafolio' : 'Eight portfolio projects'}</h3>
       <p>
-        Each one has a technical bar and a business bar — plus a number.
-        No vibes. These are the artifacts that go on your LinkedIn and in
-        front of a client.
+        {es
+          ? 'Cada uno tiene un nivel técnico y un nivel de negocio — y un número. Nada de impresiones. Estos son los artefactos que van a tu LinkedIn y frente a un cliente.'
+          : 'Each one has a technical bar and a business bar — plus a number. No vibes. These are the artifacts that go on your LinkedIn and in front of a client.'}
       </p>
       <div class="project-grid">
-        <div class="project"><strong>My First Model, Explained</strong><span>A trained model plus a one-page explainer</span></div>
-        <div class="project"><strong>The ML Pipeline, Shipped</strong><span>A live URL that takes input and returns a prediction</span></div>
-        <div class="project"><strong>Attention From Scratch</strong><span>Verified against PyTorch's own implementation</span></div>
-        <div class="project"><strong>The Expert Knowledge System</strong><span>RAG with citations, measured with Recall@k and MRR</span></div>
-        <div class="project"><strong>Ship It</strong><span>A production service with CI, tracing, and a cost dashboard</span></div>
-        <div class="project"><strong>The Agent That Works While You Sleep</strong><span>Scheduled, guarded, budgeted, with a full audit log</span></div>
-        <div class="project"><strong>The Vision Pipeline</strong><span>Detection, tracking, and a justified operating point</span></div>
-        <div class="project"><strong>The Capstone</strong><span>Your shipped AI product, presented on Demo Day</span></div>
+        {projects.map((p) => (
+          <div class="project"><strong>{p.name}</strong><span>{p.bar}</span></div>
+        ))}
       </div>
     </div>
   </div>
@@ -129,9 +78,9 @@ const quarters = [
     border-radius: var(--radius); margin-bottom: 8px;
     transition: border-color .15s, background .15s;
   }
-  .session:hover { border-color: rgba(16,185,129,0.4); background: var(--bg-card-hover); }
+  .session:hover { border-color: var(--border-accent); background: var(--bg-card-hover); }
   .s-num {
-    color: var(--accent); font-weight: 800; font-size: 1.05rem;
+    color: var(--accent); font-weight: 700; font-size: 1.05rem;
     font-variant-numeric: tabular-nums;
   }
   .s-body h4 { font-size: 1rem; font-weight: 700; margin: 0 0 3px; }

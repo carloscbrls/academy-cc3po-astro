@@ -1,0 +1,160 @@
+---
+// One track page, rendered from the single curriculum source. The two
+// rooms share the 24-session arc and the first four sessions; a track
+// page differs in framing, tools, and qualification — never in the
+// curriculum data itself.
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+import Base from '../layouts/Base.astro';
+import { quarters, projects, tracks } from '../data/curriculum.mjs';
+
+export interface Props { track: 'operator' | 'builder'; lang?: 'en' | 'es' }
+const { track, lang = 'en' } = Astro.props;
+const es = lang === 'es';
+const t = tracks[track];
+const other = tracks[track === 'operator' ? 'builder' : 'operator'];
+const base = es ? '/es' : '';
+
+const copy = {
+  operator: {
+    title: es ? 'Modalidad Operator — Cero código' : 'The Operator Track — Zero Code',
+    desc: es
+      ? 'La modalidad sin código del CC3PO AI Builders Lab: n8n, Make, Dify y Sheets. Construye sistemas de IA que corren en tu negocio, sin escribir código.'
+      : 'The zero-code track of the CC3PO AI Builders Lab: n8n, Make, Dify, Sheets. Build AI systems that run in your business, without writing code.',
+    h1: es ? 'Operator: sistemas reales, cero código' : 'Operator: real systems, zero code',
+    intro: es
+      ? 'Diriges un negocio, un equipo o una operación — y el trabajo repetitivo te está comiendo el día. En este salón construyes los sistemas que lo absorben: flujos que responden a tus clientes en inglés y español, agentes con una persona supervisando, automatizaciones que corren mientras duermes. Sin escribir código.'
+      : "You run a business, a team, or an operation — and repetitive work is eating your day. In this room you build the systems that absorb it: workflows that answer your customers in English and Spanish, agents with a human in the loop, automations that run while you sleep. Without writing code.",
+    forYou: es
+      ? ['Diriges o trabajas en un negocio y tienes un proceso que te quita horas cada semana', 'Nunca has escrito código — y no necesitas empezar para construir la primera versión', 'Quieres herramientas que tu equipo pueda usar el lunes, no una teoría para el algún día']
+      : ['You run or work in a business and have a process that eats hours every week', "You've never written code — and you don't need to start to build the first version", 'You want tools your team can use on Monday, not theory for someday'],
+    lens: es
+      ? 'Tu lente en el recorrido: cada concepto se trabaja con las herramientas sin código. Cuando la sesión abre el motor, tú construyes la versión que corre en tu operación — el mismo artefacto, por la ruta sin código.'
+      : 'Your lens on the arc: every concept gets worked through the zero-code tools. When a session opens the engine, you build the version that runs in your operation — the same artifact, by the no-code route.',
+  },
+  builder: {
+    title: es ? 'Modalidad Builder — Escríbelo tú mismo' : 'The Builder Track — Write It Yourself',
+    desc: es
+      ? 'La modalidad técnica del CC3PO AI Builders Lab: Python, FastAPI, Docker y GitHub. De los primeros principios a un servicio en producción.'
+      : 'The technical track of the CC3PO AI Builders Lab: Python, FastAPI, Docker, GitHub. From first principles to a production service.',
+    h1: es ? 'Builder: escríbelo tú mismo, desde los principios' : 'Builder: write it yourself, from first principles',
+    intro: es
+      ? 'Quieres entender la máquina, no solo usarla. En este salón implementas la atención desde cero, entrenas y evalúas modelos, y despliegas servicios con CI, trazabilidad y tablero de costos. El mismo recorrido de 24 sesiones, a profundidad técnica completa.'
+      : 'You want to understand the machine, not just use it. In this room you implement attention from scratch, train and evaluate models, and ship services with CI, tracing, and a cost dashboard. The same 24-session arc, at full technical depth.',
+    forYou: es
+      ? ['Escribes código o quieres escribirlo en serio — este es el salón donde se construye el oficio', 'Quieres sistemas que puedas explicar línea por línea, no cajas negras que esperas que funcionen', 'Apuntas a trabajo técnico: cada proyecto tiene un nivel medible y un artefacto público']
+      : ['You write code, or want to learn it for real — this is the room where the craft gets built', 'You want systems you can explain line by line, not black boxes you hope behave', "You're aiming at technical work: every project has a measurable bar and a public artifact"],
+    lens: es
+      ? 'Tu lente en el recorrido: implementas el mecanismo, no solo el resultado — tu propia implementación de atención, tu suite de evaluación, tu servicio en producción con su tablero de costos.'
+      : 'Your lens on the arc: you implement the mechanism, not just the outcome — your own attention implementation, your eval suite, your production service with its cost dashboard.',
+  },
+}[track];
+---
+<Base title={copy.title} description={copy.desc} lang={lang}>
+  <Nav lang={lang} altHref={`${es ? '' : '/es'}/tracks/${t.slug}`} />
+  <main id="main-content">
+    <section class="track-hero">
+      <div class="container">
+        <span class="fork-label mono">{es ? 'Modalidad' : 'Track'} · {t.stackLine}</span>
+        <h1>{copy.h1}</h1>
+        <p class="intro">{copy.intro}</p>
+        <div class="cta-row">
+          <a class="cta" href={`${base}/apply?track=${t.slug}`}>{es ? 'Solicitar — modalidad ' : 'Apply — '}{t.name}{es ? '' : ' track'}</a>
+          <a class="cta secondary" href={`${base}/tracks/${other.slug}`}>{es ? 'Ver la otra modalidad' : 'See the other track'}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="track-body">
+      <div class="container">
+        <div class="cols">
+          <div class="col">
+            <h2>{es ? 'Este salón es para ti si…' : 'This room is for you if…'}</h2>
+            <ul class="for-you">
+              {copy.forYou.map((line) => <li>{line}</li>)}
+            </ul>
+            <h2>{es ? 'Cómo se trabaja el recorrido' : 'How you work the arc'}</h2>
+            <p class="lens">{copy.lens}</p>
+            <p class="lens">
+              {es
+                ? 'Las primeras cuatro sesiones son compartidas con la otra modalidad y no necesitan nada de código. El recorrido completo es el mismo para todos: 24 sesiones, 8 proyectos, un artefacto por sesión.'
+                : 'The first four sessions are shared with the other room and need zero code. The full arc is the same for everyone: 24 sessions, 8 projects, one artifact per session.'}
+            </p>
+          </div>
+          <div class="col">
+            <h2>{es ? 'Los 8 proyectos' : 'The 8 projects'}</h2>
+            <div class="project-list">
+              {projects.map((p) => (
+                <div class="project"><strong>{p.name}</strong><span>{p.bar}</span></div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <h2 class="map-title">{es ? 'El mapa de las 24 sesiones' : 'The 24-session map'}</h2>
+        {quarters.map((q) => (
+          <div class="quarter">
+            <h3><span class="q-label">{q.label}</span> {q.title}</h3>
+            <ol class="sessions">
+              {q.sessions.map((s) => (
+                <li class="session">
+                  <span class="s-num mono">{String(s.n).padStart(2, '0')}</span>
+                  <span class="s-title">{s.title}</span>
+                  <span class="s-artifact">{es ? 'Te llevas' : 'You leave with'}: {s.artifact}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer lang={lang} />
+</Base>
+<style>
+  .track-hero { padding: 70px 0 40px; }
+  .fork-label { color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  h1 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 800; letter-spacing: -0.02em; margin: 14px 0 16px; max-width: 760px; }
+  .intro { color: var(--text-muted); font-size: 1.08rem; max-width: 680px; line-height: 1.65; }
+  .cta-row { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .cta {
+    display: inline-block; background: var(--accent-strong); color: var(--brand-paper); font-weight: 700;
+    padding: 13px 28px; border-radius: 999px; font-size: 0.98rem;
+  }
+  .cta:hover { background: var(--accent-strong); box-shadow: 0 0 0 2px var(--accent-hover); }
+  .cta.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .cta.secondary:hover { background: var(--bg-card-hover); border-color: var(--border-accent); }
+  .track-body { padding: 20px 0 70px; }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; margin-bottom: 54px; }
+  h2 { font-size: 1.35rem; font-weight: 700; margin: 0 0 14px; }
+  .for-you { list-style: none; padding: 0; margin: 0 0 30px; }
+  .for-you li {
+    color: var(--text-muted); font-size: 0.96rem; padding: 10px 0 10px 22px; position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+  .for-you li::before { content: '▸'; color: var(--accent); position: absolute; left: 0; }
+  .lens { color: var(--text-muted); font-size: 0.96rem; margin: 0 0 14px; line-height: 1.65; }
+  .project-list { display: grid; gap: 10px; }
+  .project {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px 18px;
+  }
+  .project strong { display: block; font-size: 0.95rem; margin-bottom: 3px; }
+  .project span { color: var(--text-dim); font-size: 0.85rem; }
+  .map-title { margin-bottom: 20px; }
+  .quarter { margin-bottom: 30px; }
+  .quarter h3 { font-size: 1.05rem; font-weight: 700; margin: 0 0 10px; }
+  .q-label { color: var(--accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-right: 8px; }
+  .sessions { list-style: none; padding: 0; margin: 0; }
+  .session {
+    display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center;
+    padding: 10px 16px; background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; margin-bottom: 6px; font-size: 0.92rem;
+  }
+  .s-num { color: var(--accent); font-weight: 700; }
+  .s-artifact { color: var(--text-dim); font-size: 0.84rem; text-align: right; }
+  @media (max-width: 700px) {
+    .session { grid-template-columns: 36px 1fr; }
+    .s-artifact { grid-column: 2; text-align: left; }
+  }
+</style>

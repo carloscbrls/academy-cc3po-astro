@@ -1,20 +1,26 @@
+---
+import { deposit } from '../config/academy.mjs';
+export interface Props { lang?: 'en' | 'es' }
+const { lang = 'en' } = Astro.props;
+const es = lang === 'es';
+---
 <section class="hero">
   <div class="container">
-    <div class="badge">Free · Monthly to start · Stockton, CA</div>
-    <h1>Build real AI systems.<br/>Start from the beginning.</h1>
+    <div class="badge">{es ? 'Gratis · Una vez al mes al principio · Stockton, CA' : 'Free to attend · Monthly to start · Stockton, CA'}</div>
+    <h1>{es ? <>Construye sistemas de IA reales.<br/>Empieza desde el principio.</> : <>Build real AI systems.<br/>Start from the beginning.</>}</h1>
     <p class="tagline">
-      A former Tesla Vision engineer teaches you how machines actually learn —
-      and then how to ship a system that works. Every session you leave with
-      something that runs.
+      {es
+        ? 'Un ex ingeniero de Tesla Vision te enseña cómo aprenden realmente las máquinas — y después, cómo poner en producción un sistema que funciona. En cada sesión te llevas algo que corre.'
+        : 'A former Tesla Vision engineer teaches you how machines actually learn — and then how to ship a system that works. Every session you leave with something that runs.'}
     </p>
     <div class="cta-row">
-      <a href="#apply" class="cta">Apply in 2 Minutes</a>
-      <a href="#curriculum" class="cta secondary">See the 24 sessions</a>
+      <a href={es ? '/es/apply' : '/apply'} class="cta">{es ? 'Solicita en 2 minutos' : 'Apply in 2 Minutes'}</a>
+      <a href="#curriculum" class="cta secondary">{es ? 'Ver las 24 sesiones' : 'See the 24 sessions'}</a>
     </div>
     <ul class="proof">
-      <li><strong>24</strong> sessions over 12 months</li>
-      <li><strong>8</strong> portfolio projects</li>
-      <li><strong>$0</strong> to attend</li>
+      <li><strong>24</strong> {es ? 'sesiones en 12 meses' : 'sessions over 12 months'}</li>
+      <li><strong>8</strong> {es ? 'proyectos de portafolio' : 'portfolio projects'}</li>
+      <li><strong>{deposit.rangeLabel}</strong> {es ? 'depósito reembolsable asegura tu lugar' : 'refundable deposit holds your seat'}</li>
     </ul>
   </div>
 </section>
@@ -22,29 +28,28 @@
 <section class="credibility">
   <div class="container">
     <div class="cred">
-      <div class="cred-icon">◈</div>
+      <div class="cred-icon" aria-hidden="true">◈</div>
       <div>
-        <h2>Taught by someone who shipped perception systems at highway speed</h2>
+        <h2>{es ? 'Impartido por alguien que puso sistemas de percepción en producción a velocidad de autopista' : 'Taught by someone who shipped perception systems at highway speed'}</h2>
         <p>
-          Most AI courses are taught by people who watched the tutorials.
-          This one is taught by someone who worked on Tesla's vision stack —
-          where the demo was 98% accurate and the fleet was not. That gap is
-          what this program exists to close.
+          {es
+            ? 'La mayoría de los cursos de IA los imparten personas que vieron los tutoriales. Este lo imparte alguien que trabajó en el sistema de visión de Tesla — donde la demo tenía 98% de precisión y la flota real, no. Esa brecha es lo que este programa existe para cerrar.'
+            : "Most AI courses are taught by people who watched the tutorials. This one is taught by someone who worked on Tesla's vision stack — where the demo was 98% accurate and the fleet was not. That gap is what this program exists to close."}
         </p>
       </div>
     </div>
     <div class="cred-grid">
       <div class="cred-item">
-        <h3>You'll build in 90 minutes</h3>
-        <p>Not take notes. Every session ends with a running artifact — a URL, a repo, a deployed service.</p>
+        <h3>{es ? 'Construyes en 90 minutos' : "You'll build in 90 minutes"}</h3>
+        <p>{es ? 'No tomas apuntes. Cada sesión termina con un artefacto que corre — una URL, un repositorio, un servicio desplegado.' : 'Not take notes. Every session ends with a running artifact — a URL, a repo, a deployed service.'}</p>
       </div>
       <div class="cred-item">
-        <h3>No coding required to start</h3>
-        <p>The first four sessions need zero code. The technical track goes deeper when you're ready for it.</p>
+        <h3>{es ? 'No necesitas saber programar para empezar' : 'No coding required to start'}</h3>
+        <p>{es ? 'Las primeras cuatro sesiones no necesitan nada de código. La modalidad técnica profundiza cuando estés listo.' : "The first four sessions need zero code. The technical track goes deeper when you're ready for it."}</p>
       </div>
       <div class="cred-item">
-        <h3>Bring your own problem</h3>
-        <p>We solve real problems from the room. If you bring a business problem, we'll build it live.</p>
+        <h3>{es ? 'Trae tu propio problema' : 'Bring your own problem'}</h3>
+        <p>{es ? 'Resolvemos problemas reales del grupo. Si traes un problema de tu negocio, lo construimos en vivo.' : "We solve real problems from the room. If you bring a business problem, we'll build it live."}</p>
       </div>
     </div>
   </div>
@@ -53,8 +58,8 @@
 <style>
   .hero { padding: 90px 0 70px; text-align: center; }
   .badge {
-    display: inline-block; background: rgba(16,185,129,0.1); color: var(--accent);
-    border: 1px solid rgba(16,185,129,0.2); border-radius: 999px;
+    display: inline-block; background: color-mix(in srgb, var(--brand-accent) 12%, transparent); color: var(--accent-tint);
+    border: 1px solid var(--border-accent); border-radius: 999px;
     padding: 6px 16px; font-size: 0.8rem; font-weight: 600; margin-bottom: 26px;
   }
   h1 {
@@ -67,15 +72,15 @@
   }
   .cta-row { margin-top: 34px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
   .cta {
-    display: inline-block; background: var(--accent); color: #000; font-weight: 700;
+    display: inline-block; background: var(--accent-strong); color: var(--brand-paper); font-weight: 700;
     padding: 14px 32px; border-radius: 999px; font-size: 1rem; transition: background .2s;
   }
-  .cta:hover { background: var(--accent-hover); }
+  .cta:hover { background: var(--accent-strong); box-shadow: 0 0 0 2px var(--accent-hover); }
   .cta.secondary {
     background: transparent; color: var(--text);
     border: 1px solid var(--border);
   }
-  .cta.secondary:hover { background: var(--bg-card-hover); border-color: var(--accent); }
+  .cta.secondary:hover { background: var(--bg-card-hover); border-color: var(--border-accent); }
   .proof {
     list-style: none; display: flex; gap: 44px; justify-content: center;
     margin: 48px 0 0; padding: 0; flex-wrap: wrap;

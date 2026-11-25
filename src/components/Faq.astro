@@ -1,0 +1,115 @@
+---
+// FAQ — objection handling in the program's own voice. Every answer is
+// built from documented program facts only (deck + published site
+// copy): cadence, session length, the deposit model as ruled
+// 2026-11-25, the laptop options the application itself offers, the
+// artifact-per-session rule. No policy is invented here.
+import { deposit, cohort } from '../config/academy.mjs';
+export interface Props { lang?: 'en' | 'es' }
+const { lang = 'en' } = Astro.props;
+const es = lang === 'es';
+
+const items = es
+  ? [
+      {
+        q: '¿De verdad es gratis?',
+        a: `Sí — la asistencia es gratuita durante todo el año piloto. Lo único que pagas es un depósito de compromiso de ${deposit.rangeLabel} que asegura tu lugar y se te reembolsa cuando asistes. Existe porque los lugares son ${cohort.seats} y un lugar vacío es un lugar que le quitamos a otra persona.`,
+      },
+      {
+        q: '¿Cuánto tiempo me va a tomar?',
+        a: 'Una sesión de dos horas, en la tarde-noche, una vez al mes durante las primeras seis sesiones. Después pasamos a dos veces al mes. Entre sesiones hay tiempo de construir — así está diseñado.',
+      },
+      {
+        q: '¿Necesito una computadora portátil?',
+        a: 'Necesitas acceso a una computadora donde puedas trabajar. Si tu laptop solo permite el navegador, hay ruta para ti en las primeras sesiones; si necesitas pedir una prestada, dilo en tu solicitud y lo resolvemos antes de la primera sesión.',
+      },
+      {
+        q: '¿Qué pasa si falto a una sesión?',
+        a: 'El programa avanza en secuencia y cada sesión termina con un artefacto que es tu boleto a la siguiente. Avísanos antes si puedes — y ponte al corriente con el artefacto. Dos horas al mes es el compromiso que pedimos a cambio del lugar.',
+      },
+      {
+        q: 'Soy malo para las matemáticas. ¿Esto es para mí?',
+        a: 'La sesión 5 se llama «Álgebra Lineal Sin Tortura» por una razón. El programa empieza en los primeros principios y no asume nada — si puedes explicar tu problema, puedes construir la primera versión.',
+      },
+      {
+        q: '¿Necesito saber programar?',
+        a: 'No para empezar. Las primeras cuatro sesiones no necesitan nada de código, y la modalidad Operator construye todo el año sin código. La modalidad Builder está ahí cuando quieras escribir el código tú mismo.',
+      },
+      {
+        q: '¿Puedo enviar a alguien de mi equipo, o participar como empleador o socio comunitario?',
+        a: 'Sí. El año piloto es gratuito para residentes y personal de organizaciones aliadas, y los empleadores pueden enviar a su gente con la misma solicitud. La página de empleadores y socios tiene el resumen de una página para compartirlo con tu organización.',
+      },
+      {
+        q: '¿Quién lee mi solicitud?',
+        a: 'Una persona. Sin filtros automáticos ni puntajes. Te respondemos en una semana, sea cual sea la respuesta — y si no encajas, te lo decimos y te recomendamos algo mejor si conocemos alguna opción.',
+      },
+    ]
+  : [
+      {
+        q: 'Is this really free?',
+        a: `Yes — attendance is free for the full pilot year. The only money that moves is a ${deposit.rangeLabel} commitment deposit that holds your seat and is refunded when you attend. It exists because seats are capped at ${cohort.seats}, and an empty seat is a seat someone else didn't get.`,
+      },
+      {
+        q: 'How much time does this take?',
+        a: 'One two-hour evening session a month for the first six sessions. After that we go twice monthly. The space between sessions is build time — that is the design.',
+      },
+      {
+        q: 'Do I need a laptop?',
+        a: "You need access to a computer you can work on. If your laptop is browser-only, there's a path for you through the first sessions; if you'd need to borrow one, say so in your application and we'll sort it out before Session 1.",
+      },
+      {
+        q: 'What if I miss a session?',
+        a: "The program builds in sequence, and each session's artifact is the ticket into the next one. Tell us ahead of time if you can — and catch up on the artifact. Two hours a month is the commitment we ask in exchange for the seat.",
+      },
+      {
+        q: "I'm bad at math. Is this for me?",
+        a: 'Session 5 is called "Linear Algebra Without Torture" for a reason. The program starts at first principles and assumes nothing — if you can explain your problem, you can build the first version.',
+      },
+      {
+        q: 'Do I need to know how to code?',
+        a: "Not to start. The first four sessions need zero code, and the Operator track builds all year without code. The Builder track is there when you want to write the code yourself.",
+      },
+      {
+        q: 'Can I send someone from my team — or take part as an employer or community partner?',
+        a: "Yes. The pilot year is free for residents and staff of partner organizations, and employers can send their people through the same application. The employers & partners page has the one-page summary to share with your organization.",
+      },
+      {
+        q: 'Who reads my application?',
+        a: "A human. No filters, no scores. You'll hear back within a week either way — and if we're not a fit, we'll tell you and point you at something better if we know of it.",
+      },
+    ];
+---
+<section class="faq" id="faq">
+  <div class="container">
+    <h2>{es ? 'Preguntas frecuentes' : 'Questions, answered straight'}</h2>
+    <div class="faq-list">
+      {items.map((item) => (
+        <details class="faq-item">
+          <summary>{item.q}</summary>
+          <p>{item.a}</p>
+        </details>
+      ))}
+    </div>
+    <p class="faq-partners">
+      {es
+        ? <>¿Empleador o socio comunitario? <a href="/partners">El resumen de una página está aquí</a> — también en PDF para compartirlo.</>
+        : <>Employer or community partner? <a href="/partners">The one-page summary lives here</a> — as a PDF you can forward, too.</>}
+    </p>
+  </div>
+</section>
+<style>
+  .faq { padding: 60px 0 70px; }
+  h2 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 28px; }
+  .faq-list { max-width: 820px; }
+  .faq-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px 22px; margin-bottom: 10px;
+  }
+  .faq-item summary {
+    cursor: pointer; font-weight: 700; font-size: 1rem; padding: 6px 0;
+    list-style-position: outside;
+  }
+  .faq-item p { color: var(--text-muted); font-size: 0.95rem; margin: 10px 0 4px; line-height: 1.65; }
+  .faq-partners { color: var(--text-muted); margin-top: 20px; font-size: 0.95rem; }
+  .faq-partners a { color: var(--accent); font-weight: 600; text-decoration: underline; }
+</style>

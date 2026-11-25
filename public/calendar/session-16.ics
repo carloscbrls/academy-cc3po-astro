@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CC3PO//Academy//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:academy-session-16@academy.cc3po.com
+DTSTAMP:20261125T120000Z
+DTSTART;VALUE=DATE:20271101
+TRANSP:TRANSPARENT
+SUMMARY:CC3PO AI Builders — Session 16: Memory (evening to be confirmed — 2027-11)
+DESCRIPTION:You leave with: An assistant that remembers. Two-hour evening session\, Stockton\, CA. Free to attend\; a refundable commitment deposit holds cohort seats.
+LOCATION:Stockton\, CA
+END:VEVENT
+END:VCALENDAR

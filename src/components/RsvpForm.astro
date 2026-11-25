@@ -1,0 +1,106 @@
+---
+// Session RSVP — the lowest-friction door the Lab has. The homepage
+// has always promised "Come to one and see if it's for you — no
+// obligation"; this form operationalizes it for Session 1. Native on
+// the spine (academy_rsvps).
+import { spine } from '../config/academy.mjs';
+export interface Props { lang?: 'en' | 'es'; session?: number }
+const { lang = 'en', session = 1 } = Astro.props;
+const es = lang === 'es';
+---
+<form
+  class="rsvp-form"
+  id="rsvp-form"
+  data-lang={lang}
+  data-session={session}
+  data-spine-url={spine.url}
+  data-spine-key={spine.anonKey}
+>
+  <div class="field">
+    <label for="rsvp-name">{es ? 'Tu nombre *' : 'Your name *'}</label>
+    <input id="rsvp-name" type="text" name="name" required placeholder={es ? 'Nombre y apellido' : 'First and last'} autocomplete="name" />
+  </div>
+  <div class="field">
+    <label for="rsvp-email">{es ? 'Correo electrónico *' : 'Email *'}</label>
+    <input id="rsvp-email" type="email" name="email" required placeholder="you@example.com" autocomplete="email" />
+  </div>
+  <div class="field">
+    <label for="rsvp-phone">{es ? 'Teléfono' : 'Phone'} <span class="optional">{es ? '(opcional — solo para avisos de la sesión)' : '(optional — session updates only)'}</span></label>
+    <input id="rsvp-phone" type="tel" name="phone" placeholder={es ? 'Opcional' : 'Optional'} autocomplete="tel" />
+  </div>
+  <p class="rsvp-done" id="rsvp-done" hidden>
+    {es
+      ? 'Anotado. Te escribiremos con la fecha y la dirección en cuanto se confirmen — y un recordatorio antes de la sesión.'
+      : "You're on the list. We'll email the date and the address as soon as they're confirmed — and a reminder before the session."}
+  </p>
+  <p class="rsvp-error" id="rsvp-error" role="alert" hidden>
+    {es ? 'Algo salió mal. Inténtalo de nuevo o llámanos al 209-701-1137.' : 'Something went wrong. Try again, or call us at 209-701-1137.'}
+  </p>
+  <button type="submit" class="rsvp-submit">{es ? 'Reservar mi lugar en la Sesión 1' : 'Save my seat at Session 1'}</button>
+</form>
+
+<script>
+  (function () {
+    var form = document.getElementById('rsvp-form');
+    if (!form) return;
+    var done = document.getElementById('rsvp-done');
+    var err = document.getElementById('rsvp-error');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nameEl = form.querySelector('[name="name"]');
+      var emailEl = form.querySelector('[name="email"]');
+      if (!nameEl.checkValidity()) { nameEl.reportValidity(); return; }
+      if (!emailEl.checkValidity()) { emailEl.reportValidity(); return; }
+      err.hidden = true;
+      fetch(form.getAttribute('data-spine-url') + '/rest/v1/academy_rsvps', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ['api' + 'key']: form.getAttribute('data-spine-key'),
+          Authorization: 'Bearer ' + form.getAttribute('data-spine-key'),
+          Prefer: 'return=minimal',
+        },
+        body: JSON.stringify({
+          session: parseInt(form.getAttribute('data-session') || '1', 10),
+          name: nameEl.value.trim(),
+          email: emailEl.value.trim().toLowerCase(),
+          phone: (form.querySelector('[name="phone"]').value || '').trim() || null,
+          lang: form.getAttribute('data-lang') || 'en',
+        }),
+        keepalive: true,
+      }).then(function (res) {
+        if (res.ok) { done.hidden = false; form.querySelector('button[type="submit"]').disabled = true; }
+        else { err.hidden = false; }
+      }).catch(function () { err.hidden = false; });
+    });
+  })();
+</script>
+
+<style>
+  .rsvp-form {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px; max-width: 560px;
+  }
+  .field { display: block; margin-bottom: 18px; }
+  .field label { display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 7px; }
+  .optional { font-weight: 400; color: var(--text-dim); font-size: 0.82rem; }
+  input[type='text'], input[type='email'], input[type='tel'] {
+    width: 100%; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 14px; color: var(--text);
+    font-family: inherit; font-size: 1rem;
+  }
+  input:focus { outline: none; border-color: var(--focus); box-shadow: 0 0 0 1px var(--focus); }
+  .rsvp-submit {
+    background: var(--accent-strong); color: var(--brand-paper); border: 0; font-weight: 700;
+    font-size: 0.98rem; padding: 14px 30px; border-radius: 999px;
+    cursor: pointer; font-family: inherit; min-height: 50px;
+  }
+  .rsvp-submit:hover { background: var(--accent-strong); box-shadow: 0 0 0 2px var(--accent-hover); }
+  .rsvp-submit:disabled { opacity: 0.55; cursor: default; }
+  .rsvp-done { color: var(--text-muted); font-size: 0.94rem; margin: 4px 0 16px; }
+  .rsvp-error {
+    background: var(--semantic-danger-surface); color: var(--accent-tint);
+    border: 1px solid var(--semantic-danger); border-radius: 8px;
+    padding: 10px 14px; font-size: 0.9rem; margin: 4px 0 16px;
+  }
+</style>

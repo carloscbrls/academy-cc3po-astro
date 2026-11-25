@@ -2,17 +2,10 @@
   command = "npm run build"
   publish = "dist/"
 
-# Netlify Forms are parsed out of the built HTML during a deploy that runs
-# the site's own build command. Deploying a prebuilt `dist/` with
-# `netlify deploy --dir=dist` skips that step, which is why the form was
-# not registered the first time around.
+# Forms ruling (2026-11-24): CC3PO's own sites use native forms on the
+# Supabase spine — no Netlify Forms, no Jotform. The application, the
+# Session-1 RSVP, and the Curriculum Guide capture all post directly to
+# the spine (academy_applications / academy_rsvps / academy_guide_signups)
+# from the browser with the public anon key; RLS allows INSERT only.
 #
-# The form is defined in src/components/Newsletter.astro with:
-#   name="ai-builders-application"  data-netlify="true"  netlify
-# Submissions land in the Netlify dashboard under the site's Forms tab.
-
-[[redirects]]
-  from = "/apply"
-  to = "/#apply"
-  status = 301
-  force = true
+# The old /apply → /#apply redirect is gone: /apply is a real page now.

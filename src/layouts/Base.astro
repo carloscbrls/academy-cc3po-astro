@@ -3,12 +3,13 @@ export interface Props {
   title: string;
   description?: string;
   jsonLd?: Record<string, unknown>;
+  lang?: 'en' | 'es';
 }
-const { title, description = 'Learn to protect, optimize, and grow your digital presence.', jsonLd } = Astro.props;
+const { title, description = 'Learn to protect, optimize, and grow your digital presence.', jsonLd, lang = 'en' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://academy.cc3po.com').href;
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,20 +28,62 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://academy.cc3
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">{lang === 'es' ? 'Saltar al contenido principal' : 'Skip to main content'}</a>
   <slot />
 </body>
 </html>
 <style is:global>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ===== DESIGN TOKENS — Nightshift =====
+     Source of truth: Figma "CC3PO Design System" (KHo1hzUoGXIOzyGMJgsEDH).
+     Snapshot: ~/workspace/fleet-ui/tokens/tokens.css — values copied from
+     the snapshot, not hand-invented. Legacy academy names alias the token
+     names, the same pattern as the flagship's global.css. */
   :root {
-    --bg: #0a0a0a; --bg-card: #141414; --bg-card-hover: #1a1a1a;
-    --accent: #10b981; --accent-hover: #059669;
-    --text: #f5f5f5; --text-muted: #a3a3a3; --text-dim: #737373;
-    --border: #262626; --radius: 12px;
+    /* Fleet tokens — Color/Brand */
+    --brand-navy: #0f3460;
+    --brand-gold: #e6a50f;
+    --brand-silver: #98a6b3;
+    --brand-bronze: #c56520;
+    --brand-ink: #171a1f;
+    --brand-paper: #ffffff;
+    --brand-accent: #e8506b;
+    --brand-accent-hover: #f0617a;
+    --brand-accent-strong: #b82d45;
+    --brand-night: #0a0a12;
+    --brand-surface-dark: #11111f;
+    /* Fleet tokens — Color/Semantic */
+    --semantic-danger: #cf2e4f;
+    --semantic-danger-tint: #ef6a87;
+    --semantic-danger-surface: #271626;
+    --semantic-success: #00e676;
+    --semantic-warning: #ffd700;
+    --semantic-info: #4fc3f7;
+    --semantic-focus: #0d9488;
+    --semantic-muted: rgba(255, 255, 255, 0.78);
+    /* Radii */
+    --radius-md: 16px;
+
+    /* Legacy academy names → tokens */
+    --bg: var(--brand-night);
+    --bg-card: var(--brand-surface-dark);
+    --bg-card-hover: color-mix(in srgb, var(--brand-paper) 5%, var(--brand-surface-dark));
+    --accent: var(--brand-accent);
+    --accent-strong: var(--brand-accent-strong);
+    --accent-hover: var(--brand-accent-hover);
+    --accent-tint: var(--semantic-danger-tint);
+    --accent-mist: color-mix(in srgb, var(--brand-accent) 12%, transparent);
+    --text: var(--brand-paper);
+    --text-muted: var(--semantic-muted);
+    --text-dim: color-mix(in srgb, var(--brand-paper) 62%, transparent);
+    --border: color-mix(in srgb, var(--brand-paper) 14%, transparent);
+    --border-accent: color-mix(in srgb, var(--brand-accent) 45%, transparent);
+    --focus: var(--semantic-focus);
+    --radius: var(--radius-md);
   }
   body {
     font-family: 'Inter', system-ui, sans-serif;
@@ -48,11 +91,25 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://academy.cc3
     line-height: 1.6; min-height: 100vh;
   }
   a { color: inherit; text-decoration: none; }
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
   .skip-link {
     position: absolute; left: -9999px; top: 0; z-index: 100;
-    background: var(--accent); color: #000; font-weight: 700;
+    background: var(--focus); color: var(--brand-paper); font-weight: 700;
     padding: 10px 18px; border-radius: 0 0 8px 0;
   }
   .skip-link:focus { left: 0; }
   .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
 </style>
