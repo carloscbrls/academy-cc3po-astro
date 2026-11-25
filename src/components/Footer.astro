@@ -1,11 +1,13 @@
 ---
 import SupportNote from './SupportNote.astro';
+import VillageRail from './VillageRail.astro';
 export interface Props { lang?: 'en' | 'es' }
 const { lang = 'en' } = Astro.props;
 const es = lang === 'es';
 ---
 <footer class="footer">
   <div class="container">
+    <VillageRail lang={lang} />
     <div class="row">
       <div class="brand">
         <div class="logo">CC3PO <span>AI Builders</span></div>

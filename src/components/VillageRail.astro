@@ -1,0 +1,51 @@
+---
+export interface Props { lang?: 'en' | 'es' }
+const { lang = 'en' } = Astro.props;
+const es = lang === 'es';
+
+const doors = es
+  ? [
+      { label: 'Ayuda', desc: "Don't Lose Your Way", href: 'https://dontloseyourway.cc3po.com/start-here/?utm_source=academy.cc3po.com&utm_medium=village-rail&utm_campaign=dlyw-story' },
+      { label: 'Escucha', desc: 'More Than Myself — 3 de diciembre', href: 'https://music.cc3po.com/release/more-than-myself-a-christmas-journey?utm_source=academy.cc3po.com&utm_medium=village-rail&utm_campaign=estate-listen' },
+      { label: 'Lee', desc: 'CC3PO Insights', href: 'https://insights.cc3po.com/?utm_source=academy.cc3po.com&utm_medium=village-rail&utm_campaign=estate-read' },
+      { label: 'Aprende', desc: 'Academy — el laboratorio de IA gratuito', href: 'https://academy.cc3po.com/?utm_source=academy.cc3po.com&utm_medium=village-rail&utm_campaign=estate-learn' },
+      { label: 'Escaneo gratis', desc: 'Revisión de cumplimiento web', href: 'https://cc3po.com/audit?utm_source=academy.cc3po.com&utm_medium=village-rail&utm_campaign=estate-scan' },
+      { label: 'Llama', desc: '209-701-1137', href: 'tel:+12097011137' },
+    ]
+  : [
+      { label: 'Get help', desc: "Don't Lose Your Way", href: 'https://dontloseyourway.cc3po.com/start-here/?utm_source=academy.cc3po.com&utm_medium=village-rail&utm_campaign=dlyw-story' },
+      { label: 'Listen', desc: 'More Than Myself — out Dec 3', href: 'https://music.cc3po.com/release/more-than-myself-a-christmas-journey?utm_source=academy.cc3po.com&utm_medium=village-rail&utm_campaign=estate-listen' },
+      { label: 'Read', desc: 'CC3PO Insights', href: 'https://insights.cc3po.com/?utm_source=academy.cc3po.com&utm_medium=village-rail&utm_campaign=estate-read' },
+      { label: 'Learn', desc: 'Academy — the free AI Lab', href: 'https://academy.cc3po.com/?utm_source=academy.cc3po.com&utm_medium=village-rail&utm_campaign=estate-learn' },
+      { label: 'Run the free scan', desc: 'Website compliance check', href: 'https://cc3po.com/audit?utm_source=academy.cc3po.com&utm_medium=village-rail&utm_campaign=estate-scan' },
+      { label: 'Call', desc: '209-701-1137', href: 'tel:+12097011137' },
+    ];
+---
+<nav class="village-rail" aria-label="Village rail">
+  <p class="rail-heading">The Village</p>
+  <ul class="rail-doors">
+    {doors.map((door) => (
+      <li>
+        <a class="rail-door" href={door.href}>
+          <span class="rail-label">{door.label}</span>
+          <span class="rail-desc">{door.desc}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+<style>
+  .village-rail { margin-bottom: 32px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .rail-heading { color: var(--accent-tint); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+  .rail-doors { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; }
+  .rail-doors li { flex: 1 1 150px; min-width: 0; }
+  .rail-door {
+    display: flex; flex-direction: column; justify-content: center; gap: 2px;
+    min-height: 44px; height: 100%; padding: 10px 14px;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--bg-card); transition: border-color 0.2s, background 0.2s;
+  }
+  .rail-door:hover { border-color: var(--border-accent); background: var(--bg-card-hover); }
+  .rail-label { color: var(--text); font-weight: 700; font-size: 0.95rem; line-height: 1.3; }
+  .rail-desc { color: var(--text-dim); font-size: 0.8rem; line-height: 1.35; overflow-wrap: break-word; }
+</style>
